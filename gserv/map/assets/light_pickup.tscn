@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhqwmgs02s63i"]
+
+[ext_resource type="Script" path="res://map/assets/collectable.gd" id="1_um5cw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcl5f"]
+albedo_color = Color(1, 1, 0.698039, 1)
+metallic_specular = 0.59
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.847059, 0.74902, 1)
+emission_energy = 2.66
+
+[sub_resource type="SphereMesh" id="SphereMesh_w0gyq"]
+material = SubResource( "StandardMaterial3D_bcl5f" )
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_11rou"]
+
+[node name="LightPickup" type="Node3D"]
+script = ExtResource( "1_um5cw" )
+object_type = 50
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.13585, 0)
+mesh = SubResource( "SphereMesh_w0gyq" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.13585, 0)
+shape = SubResource( "SphereShape3D_11rou" )

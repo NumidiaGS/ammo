@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://iqug512ehkhh"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_0dwh7"]
+[ext_resource type="Material" path="res://map/assets/grey_grid/grey_grid.tres" id="2_4kmdh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvct6"]
+material = ExtResource( "2_4kmdh" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ogr7r"]
+
+[node name="GreyGrid" type="Node3D"]
+script = ExtResource( "1_0dwh7" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_yvct6" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_ogr7r" )

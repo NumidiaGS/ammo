@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7a4o4dr688af"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_0bloi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y5fx"]
+albedo_color = Color(1, 0.843137, 0.501961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjd8t"]
+material = SubResource( "StandardMaterial3D_6y5fx" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4poh"]
+
+[node name="FlaxBush" type="Node3D"]
+script = ExtResource( "1_0bloi" )
+object_type = 35
+interaction_behaviour = 10
+resource_id = 25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.9, 0, 0, 0, 0.8, 0, 0.8, 0)
+mesh = SubResource( "CylinderMesh_vjd8t" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.82, 0, 0, 0, 1.8, 0, 0, 0, 0.82, 0, 0.783452, 0)
+shape = SubResource( "BoxShape3D_b4poh" )

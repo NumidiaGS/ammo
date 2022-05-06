@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn4fb62oop3d4"]
+
+[ext_resource type="PackedScene" uid="uid://bv8hjm65d0c5w" path="res://map/archive/map_1.tscn" id="1_7rc61"]
+[ext_resource type="PackedScene" uid="uid://iqug512ehkhh" path="res://map/assets/grey_grid/grey_grid.tscn" id="1_o8i65"]
+[ext_resource type="PackedScene" uid="uid://mf0bsytp2ahi" path="res://map/assets/teal_grid/teal_grid.tscn" id="3_fac44"]
+
+[node name="Block" type="Node3D"]
+
+[node name="Kingdom" type="Node3D" parent="."]
+
+[node name="GreyGrid" parent="Kingdom" instance=ExtResource( "1_o8i65" )]
+transform = Transform3D(128, 0, 0, 0, 1, 0, 0, 0, 128, 0, -0.5, 0)
+object_type = null
+
+[node name="Map" parent="." instance=ExtResource( "1_7rc61" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 128)
+
+[node name="Kitchen" type="Node3D" parent="."]
+
+[node name="TealGrid" parent="Kitchen" instance=ExtResource( "3_fac44" )]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 0, 5, 0)
+object_type = null

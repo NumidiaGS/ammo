@@ -1,0 +1,16 @@
+extends Position3D
+
+class_name SpawnArea
+
+####################################################
+# ALERT Keep updated with gcli/map/map_object.gd
+#  AND consistent with below exported enums
+####################################################
+# ? Values are permitted for 2 bytes (s16) so between 0 to 65,535
+enum ContentType {  NULL = 0,
+					ServerOnly = 10,
+					Forest = 20, }
+@export var content: ContentType
+
+####################################################
+####################################################

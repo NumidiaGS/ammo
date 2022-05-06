@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://mf0bsytp2ahi"]
+
+[ext_resource type="Material" uid="uid://yt45v4frhonx" path="res://map/assets/teal_grid/teal_grid.tres" id="1_37qgk"]
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_gr3a2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0228o"]
+material = ExtResource( "1_37qgk" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx2nj"]
+
+[node name="TealGrid" type="Node3D"]
+script = ExtResource( "1_gr3a2" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_0228o" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_qx2nj" )

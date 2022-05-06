@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv8hjm65d0c5w"]
+
+[ext_resource type="PackedScene" uid="uid://b8dyk0tguhq11" path="res://map/assets/green_grid/green_grid.tscn" id="1_jkkw6"]
+[ext_resource type="PackedScene" uid="uid://dhqwmgs02s63i" path="res://map/assets/light_pickup.tscn" id="2_6dovc"]
+[ext_resource type="PackedScene" uid="uid://b5kxlp82iunoy" path="res://map/assets/relic.tscn" id="3_yhsj8"]
+
+[node name="Map" type="Node3D"]
+
+[node name="GreenGrid1" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(128, 0, 0, 0, 1, 0, 0, 0, 128, 0, -0.5, 0)
+object_type = null
+
+[node name="GreenGrid2" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(5, 0, 0, 0, 10, 0, 0, 0, 60, -10, 5, -34)
+object_type = null
+
+[node name="GreenGrid3" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(5, 0, 0, 0, 10, 0, 0, 0, 60, 10, 5, -34)
+object_type = null
+
+[node name="GreenGrid4" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 18.152, 5, 54)
+object_type = null
+
+[node name="GreenGrid5" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -19.503, 2, 52)
+object_type = null
+
+[node name="GreenGrid6" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -13.979, -1, 44)
+object_type = null
+
+[node name="GreenGrid7" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -18.443, -2.534, 22)
+object_type = null
+
+[node name="GreenGrid8" parent="." instance=ExtResource( "1_jkkw6" )]
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 3, -3.498, 7.545, 54)
+object_type = null
+
+[node name="LightPickup" parent="." instance=ExtResource( "2_6dovc" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.473, 2.327, 22)
+
+[node name="Relic" parent="." instance=ExtResource( "3_yhsj8" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.322, 11.229, 55)

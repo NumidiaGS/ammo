@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnaa1jcgpbki"]
+
+[ext_resource type="Script" path="res://src/server.gd" id="1_psmik"]
+
+[node name="Server" type="Node"]
+script = ExtResource( "1_psmik" )
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -39.0
+offset_bottom = 38.0
+horizontal_alignment = 1
