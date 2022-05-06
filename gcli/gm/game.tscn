@@ -1,0 +1,240 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2jd4d5k1xsfa"]
+
+[ext_resource type="Script" path="res://gm/game.gd" id="1_mo07u"]
+[ext_resource type="Script" path="res://gm/game_world.gd" id="2_56x05"]
+[ext_resource type="Script" path="res://gm/player_hero_follow_camera.gd" id="2_fesu6"]
+[ext_resource type="PackedScene" uid="uid://dcmqc5rov4j0k" path="res://units/player/player_hero.tscn" id="2_mstkl"]
+[ext_resource type="Script" path="res://gm/player_control.gd" id="2_on6oe"]
+[ext_resource type="Script" path="res://ui/fps_counter/fps_counter.gd" id="3_1pqx1"]
+[ext_resource type="Script" path="res://units/units.gd" id="3_3rp7y"]
+[ext_resource type="Script" path="res://ui/GUI.gd" id="3_12a7h"]
+[ext_resource type="Script" path="res://ui/garden/garden_gui.gd" id="6_1d4kb"]
+[ext_resource type="Theme" uid="uid://suovxbxsbs4x" path="res://ui/gui_theme.tres" id="7_xk74w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl2lj"]
+sky_top_color = Color(0.623529, 0.792157, 0.937255, 1)
+sky_horizon_color = Color(0.686275, 0.728431, 0.766667, 1)
+ground_bottom_color = Color(0.121569, 0.121569, 0.129412, 1)
+ground_horizon_color = Color(0.686275, 0.728431, 0.766667, 1)
+
+[sub_resource type="Sky" id="Sky_2crxl"]
+sky_material = SubResource( "ProceduralSkyMaterial_gl2lj" )
+
+[sub_resource type="Environment" id="Environment_axktj"]
+background_mode = 2
+background_color = Color(0.0901961, 0.0784314, 0.333333, 1)
+background_energy = 0.8
+sky = SubResource( "Sky_2crxl" )
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Game" type="Node3D"]
+script = ExtResource( "1_mo07u" )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( "Environment_axktj" )
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.811475, 0.582943, 0.0410674, 0.139048, -0.26086, 0.95531, 0.567604, -0.7695, -0.292738, 0, 5, 0)
+light_indirect_energy = 9.14
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
+sky_mode = 1
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource( "2_on6oe" )
+
+[node name="PlayerHeroFollowCamera" type="Camera3D" parent="Player"]
+transform = Transform3D(-1, 2.26267e-08, -8.44439e-08, -8.88178e-16, 0.965926, 0.258819, 8.74228e-08, 0.258819, -0.965926, 0, 8, -15)
+fov = 60.0
+script = ExtResource( "2_fesu6" )
+
+[node name="PlayerHero" parent="Player" instance=ExtResource( "2_mstkl" )]
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource( "2_56x05" )
+
+[node name="Units" type="Node3D" parent="."]
+script = ExtResource( "3_3rp7y" )
+
+[node name="GUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( "3_12a7h" )
+
+[node name="FPSCounter" type="ColorRect" parent="GUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_bottom = 25.0
+grow_horizontal = 0
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.745098)
+script = ExtResource( "3_1pqx1" )
+
+[node name="FPSLabel" type="Label" parent="GUI/FPSCounter"]
+offset_right = 109.0
+offset_bottom = 23.0
+
+[node name="HeroStateLabel" type="Label" parent="GUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 49.0
+offset_top = -105.0
+offset_right = 148.0
+offset_bottom = -41.0
+
+[node name="Garden" type="Control" parent="GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( "6_1d4kb" )
+
+[node name="StatusRect" type="ColorRect" parent="GUI/Garden"]
+visible = false
+offset_left = 436.0
+offset_top = 497.0
+offset_right = 614.0
+offset_bottom = 521.0
+color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+
+[node name="StatusLabel" type="Label" parent="GUI/Garden/StatusRect"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QueueInfo" type="Panel" parent="GUI/Garden"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.0
+offset_top = -101.0
+offset_right = 189.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( "7_xk74w" )
+
+[node name="InfoLabel" type="Label" parent="GUI/Garden/QueueInfo"]
+anchor_left = 0.0261283
+anchor_top = 0.288557
+anchor_right = 0.964371
+anchor_bottom = 0.746269
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 0
+autowrap_mode = 3
+
+[node name="QueueButton" type="Button" parent="GUI/Garden/QueueInfo"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -36.0
+offset_right = 42.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Queue"
+
+[node name="ExitButton" type="Button" parent="GUI/Garden/QueueInfo"]
+offset_left = 383.0
+offset_top = 6.0
+offset_right = 414.0
+offset_bottom = 37.0
+text = "X"
+
+[node name="TargetLabel" type="Label" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -44.0
+offset_right = 82.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Inventory" type="Panel" parent="GUI"]
+anchor_left = 0.75
+anchor_top = 1.0
+anchor_right = 0.75
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -89.0
+offset_right = 66.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GUI/Inventory"]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 125.0
+offset_bottom = 40.0
+
+[node name="Label2" type="Label" parent="GUI/Inventory"]
+offset_left = 5.0
+offset_top = 49.0
+offset_right = 128.0
+offset_bottom = 80.0
+
+[node name="ActionBar" type="VBoxContainer" parent="GUI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = -174.0
+offset_right = 105.0
+offset_bottom = -19.0
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = false
+
+[node name="HSeparator" type="HSeparator" parent="GUI/ActionBar"]
+offset_right = 86.0
+offset_bottom = 4.0
+
+[node name="HSeparator2" type="HSeparator" parent="GUI/ActionBar"]
+offset_top = 8.0
+offset_right = 86.0
+offset_bottom = 12.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/ActionBar"]
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 47.0
+alignment = 1
+
+[node name="Button" type="Button" parent="GUI/ActionBar/HBoxContainer"]
+offset_left = 8.0
+offset_right = 43.0
+offset_bottom = 31.0
+hint_tooltip = "Create a new kingdom holding"
+text = "+pr"
+
+[node name="Button2" type="Button" parent="GUI/ActionBar/HBoxContainer"]
+offset_left = 47.0
+offset_right = 77.0
+offset_bottom = 31.0
+text = "???"
+
+[node name="HSeparator3" type="HSeparator" parent="GUI/ActionBar"]
+offset_top = 51.0
+offset_right = 86.0
+offset_bottom = 55.0
+
+[connection signal="pressed" from="GUI/Garden/QueueInfo/QueueButton" to="GUI/Garden" method="_on_queue_button_pressed"]
+[connection signal="pressed" from="GUI/Garden/QueueInfo/ExitButton" to="GUI/Garden" method="_on_queue_info_exit_pressed"]
+[connection signal="pressed" from="GUI/ActionBar/HBoxContainer/Button" to="GUI" method="_on_action_button_pressed" binds= ["PlaceProperty"]]

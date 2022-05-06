@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://biy0bndnlxca"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_crlsf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qgwl"]
+albedo_color = Color(0.603922, 0.298039, 0.101961, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_i3aam"]
+material = SubResource( "StandardMaterial3D_8qgwl" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilfeb"]
+albedo_color = Color(0.0196078, 0.376471, 0.0784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ps0p"]
+material = SubResource( "StandardMaterial3D_ilfeb" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3316n"]
+size = Vector3(3, 5, 3)
+
+[node name="Tree" type="Node3D"]
+script = ExtResource( "1_crlsf" )
+object_type = 35
+interaction_behaviour = 5
+resource_id = 20
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 8, 0, 0, 0, 1, 0, 8, 0)
+mesh = SubResource( "CylinderMesh_i3aam" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 6, 0, 15.0812, 0)
+mesh = SubResource( "BoxMesh_1ps0p" )
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 4, 0, 16.5, 0)
+mesh = SubResource( "BoxMesh_1ps0p" )
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 17.5, 0)
+mesh = SubResource( "BoxMesh_1ps0p" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource( "BoxShape3D_3316n" )

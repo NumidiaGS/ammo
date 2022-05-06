@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcmqc5rov4j0k"]
+
+[ext_resource type="Script" path="res://units/player/player_hero.gd" id="1_yu8vw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0ib5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ciuvq"]
+albedo_color = Color(0.227451, 0.74902, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v7mlc"]
+material = SubResource( "StandardMaterial3D_ciuvq" )
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s00j1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5xsc"]
+albedo_color = Color(1, 0.705882, 0.490196, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_08dfq"]
+material = SubResource( "StandardMaterial3D_x5xsc" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u23p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj66n"]
+albedo_color = Color(0.917647, 0.0196078, 0.0196078, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wjvtp"]
+material = SubResource( "StandardMaterial3D_dj66n" )
+
+[node name="PlayerHero" type="CharacterBody3D"]
+script = ExtResource( "1_yu8vw" )
+
+[node name="Torso" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.719204, 0, 0, 0, 1, 0, 0.715, 0)
+shape = SubResource( "CapsuleShape3D_o0ib5" )
+
+[node name="TorsoMesh" type="MeshInstance3D" parent="Torso"]
+mesh = SubResource( "CapsuleMesh_v7mlc" )
+
+[node name="Head" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.606557, 0, 0, 0, 0.536513, 0, 0, 0, 0.673698, 0, 1.88153, 0)
+shape = SubResource( "SphereShape3D_s00j1" )
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head"]
+mesh = SubResource( "SphereMesh_08dfq" )
+
+[node name="Backpack" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.793865, 0, 0, 0, 0.630106, 0, 0, 0, 0.30891, 0.0185378, 0.861722, -0.608002)
+shape = SubResource( "BoxShape3D_7u23p" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Backpack"]
+mesh = SubResource( "BoxMesh_wjvtp" )

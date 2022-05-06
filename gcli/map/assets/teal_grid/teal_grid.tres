@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ce43m10ifueso"]
+
+[ext_resource type="Texture2D" uid="uid://de0b8xdixtvum" path="res://map/assets/teal_grid/teal_grid.png" id="1_duqbp"]
+
+[resource]
+albedo_texture = ExtResource( "1_duqbp" )
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

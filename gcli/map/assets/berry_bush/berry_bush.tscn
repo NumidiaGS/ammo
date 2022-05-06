@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtpi5qkgyhtob"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_evghv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0miib"]
+albedo_color = Color(0, 0.282353, 0.00392157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4wsdt"]
+material = SubResource( "StandardMaterial3D_0miib" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4sh0"]
+albedo_color = Color(1, 0.0470588, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8ebgu"]
+material = SubResource( "StandardMaterial3D_c4sh0" )
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_swxmp"]
+
+[node name="BerryBush" type="Node3D"]
+script = ExtResource( "1_evghv" )
+object_type = 35
+interaction_behaviour = 11
+resource_id = 26
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30909, 0)
+mesh = SubResource( "SphereMesh_4wsdt" )
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.861395, 0.930853, 0)
+mesh = SubResource( "SphereMesh_8ebgu" )
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.926709, 0.637674, 0)
+mesh = SubResource( "SphereMesh_8ebgu" )
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.022312, 0.984975, 0.711395)
+mesh = SubResource( "SphereMesh_8ebgu" )
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.022312, 0.964275, -0.66291)
+mesh = SubResource( "SphereMesh_8ebgu" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0.28, 0)
+shape = SubResource( "SphereShape3D_swxmp" )

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://4sshodfwvy0q"]
+
+[ext_resource type="Script" path="res://iables/light_pickup/light_pickup.gd" id="1_u6wpo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bcl5f"]
+albedo_color = Color(1, 1, 0.698039, 1)
+metallic_specular = 0.59
+roughness = 0.0
+emission_enabled = true
+emission = Color(1, 0.847059, 0.74902, 1)
+emission_energy = 2.66
+
+[sub_resource type="SphereMesh" id="SphereMesh_w0gyq"]
+material = SubResource( "StandardMaterial3D_bcl5f" )
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_11rou"]
+
+[node name="LightPickup" type="MeshInstance3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 1.13585, 0)
+mesh = SubResource( "SphereMesh_w0gyq" )
+script = ExtResource( "1_u6wpo" )
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource( "SphereShape3D_11rou" )

@@ -1,0 +1,115 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node",
+"class": &"GameSceneLoader",
+"language": &"GDScript",
+"path": "res://gm/game_scene_loader.gd"
+}, {
+"base": "Node3D",
+"class": &"GameWorld",
+"language": &"GDScript",
+"path": "res://gm/game_world.gd"
+}, {
+"base": "Node3D",
+"class": &"KingdomHolding",
+"language": &"GDScript",
+"path": "res://map/kingdom_holding.gd"
+}, {
+"base": "RefCounted",
+"class": &"KingdomPropertyInfo",
+"language": &"GDScript",
+"path": "res://map/kingdom_property_info.gd"
+}, {
+"base": "Node3D",
+"class": &"MapChunk",
+"language": &"GDScript",
+"path": "res://map/map_chunk.gd"
+}, {
+"base": "Node3D",
+"class": &"MapObject",
+"language": &"GDScript",
+"path": "res://map/map_object.gd"
+}, {
+"base": "Node3D",
+"class": &"PlayerControl",
+"language": &"GDScript",
+"path": "res://gm/player_control.gd"
+}, {
+"base": "CharacterBody3D",
+"class": &"PlayerHero",
+"language": &"GDScript",
+"path": "res://units/player/player_hero.gd"
+}, {
+"base": "Object",
+"class": &"TerrainMeshGen",
+"language": &"GDScript",
+"path": "res://map/terrain_mesh_gen.gd"
+}]
+_global_script_class_icons={
+"GameSceneLoader": "",
+"GameWorld": "",
+"KingdomHolding": "",
+"KingdomPropertyInfo": "",
+"MapChunk": "",
+"MapObject": "",
+"PlayerControl": "",
+"PlayerHero": "",
+"TerrainMeshGen": ""
+}
+
+[application]
+
+config/name="gcli"
+run/main_scene="res://cs/character_selection.tscn"
+config/icon="res://icon.png"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[autoload]
+
+Server="*res://net/server.gd"
+
+[debug]
+
+gdscript/warnings/integer_division=false
+
+[display]
+
+window/size/viewport_width=1440
+window/size/viewport_height=800
+
+[editor]
+
+run/main_run_args="127.0.0.1 1909 Jimmy"
+
+[input]
+
+d_use={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[rendering]
+
+vulkan/staging_buffer/max_size_mb=512
+shadows/directional_shadow/size=1024
+shadows/directional_shadow/size.mobile=1024
+environment/ssao/quality=0
+environment/ssil/quality=0
+environment/glow/upscale_mode=0
+global_illumination/sdfgi/probe_ray_count=0
+global_illumination/sdfgi/frames_to_converge=0
+global_illumination/sdfgi/frames_to_update_lights=4
+anti_aliasing/quality/msaa=1
+anti_aliasing/quality/screen_space_aa=1
+shadows/shadow_atlas/size=1024
+shadows/shadow_atlas/size.mobile=1024

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1cut0takjwfm"]
+
+[ext_resource type="Material" uid="uid://cunmspinevgjy" path="res://map/assets/water_cell/water_cell.tres" id="1_k5fp5"]
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_yv70d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yv0xr"]
+material = ExtResource( "1_k5fp5" )
+
+[node name="WaterCell" type="Node3D"]
+script = ExtResource( "1_yv70d" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 30
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_yv0xr" )

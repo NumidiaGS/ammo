@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cunmspinevgjy"]
+
+[ext_resource type="Texture2D" uid="uid://dowlb1vfryd4f" path="res://map/assets/water_cell/water_tex.jpg" id="1_g5xkl"]
+
+[resource]
+albedo_texture = ExtResource( "1_g5xkl" )

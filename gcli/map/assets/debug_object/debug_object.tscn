@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6o5m0b5yacki"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_keb41"]
+[ext_resource type="Texture2D" uid="uid://c5ckgqgiltq77" path="res://map/assets/debug_object/debug_texture.png" id="2_lviu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bxhd"]
+albedo_texture = ExtResource( "2_lviu1" )
+uv1_scale = Vector3(3, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vmnsa"]
+material = SubResource( "StandardMaterial3D_2bxhd" )
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywutx"]
+
+[node name="DebugObject" type="Node3D"]
+script = ExtResource( "1_keb41" )
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_vmnsa" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_ywutx" )
