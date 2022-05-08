@@ -78,6 +78,7 @@ func _process(_delta: float) -> void:
 					var screen_position = event[1]
 					var result = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
 						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 20)
+					print("get_picking_collision:", result)
 				ControlEvents.CameraOrientationMotion:
 					var mm: Vector2 = event[1]
 					$PlayerHero.adjust_yaw(mm.x)

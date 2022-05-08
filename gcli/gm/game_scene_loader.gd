@@ -221,6 +221,7 @@ func _decode_map_child(pba: PackedByteArray, pba_offset: int) -> Array:
 			map_object.transform = tsfm
 			map_object.object_uid = decoded_uid
 			map_object.object_type = object_type as MapObject.ObjectType
+			
 			return [map_object, pba_offset]
 		_:
 			print("ERROR]game_scene_loader:_decode_map_child>: Unknown object_type:", \
@@ -247,7 +248,7 @@ func _decode_map_chunk(pba: PackedByteArray) -> MapChunk:
 	var child_count = pba.decode_u16(pba_offset)
 	pba_offset += 2
 	
-	var mi: MeshInstance3D = TerrainMeshGen.create_mesh(pba, pba_offset)
+	var _mi: MeshInstance3D = TerrainMeshGen.create_mesh(pba, pba_offset)
 #	map_chunk.add_child(mi)
 	pba_offset += TerrainMeshGen.TerrainRes * TerrainMeshGen.TerrainRes
 	

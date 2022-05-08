@@ -2,6 +2,7 @@ extends Node3D
 
 class_name GameWorld
 
+var space_rid: RID
 var chunks: Array
 
 #var maps: Dictionary = {}
@@ -39,6 +40,47 @@ func add_chunk(map_chunk: MapChunk) -> void:
 	
 	chunks.append(map_chunk)
 	add_child(map_chunk)
+	
+	space_rid = PhysicsServer3D.space_create()
+	
+	for child in map_chunk.get_children():
+		var mo: MapObject = child as MapObject
+		if mo and mo.object_type == MapObject.ObjectType.StaticInteractable:
+			var body_created: bool = false
+			var body_rid: RID
+			
+			for grand_child in mo.get_children():
+				var co: CollisionShape3D = grand_child as CollisionShape3D
+				if not co:
+					continue
+				
+				if body_created == false:
+					body_rid = PhysicsServer3D.body_create()
+					PhysicsServer3D.body_set_mode(body_rid, PhysicsServer3D.BODY_MODE_STATIC)
+					body_created = true
+				
+				var shape_rid: RID
+				if co.shape is BoxShape3D:
+					shape_rid = PhysicsServer3D.box_shape_create()
+					PhysicsServer3D.shape_set_data(shape_rid, (co.shape as BoxShape3D).size)
+					PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
+					print("--added box:", shape_rid)
+				elif co.shape is SphereShape3D:
+					shape_rid = PhysicsServer3D.sphere_shape_create()
+					PhysicsServer3D.shape_set_data(shape_rid, (co.shape as SphereShape3D).radius)
+					PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
+					print("--added sphere:", shape_rid)
+				else:
+					print("dont know what shape TODO")
+			
+			if body_created:
+				print("body_rid:", body_rid)
+				PhysicsServer3D.body_set_space(body_rid, space_rid)
+				PhysicsServer3D.body_set_state(body_rid, PhysicsServer3D.BODY_STATE_TRANSFORM, \
+					mo.transform)
+				PhysicsServer3D.body_set_ray_pickable(body_rid, true)
+			else:
+				print("no shapes found for static-interactable!:", mo.resource_id)
 	
 	# TODO
 #	for child in node.get_children():
@@ -162,38 +204,60 @@ func _ray_intersects_box(box_min: Vector3, box_max: Vector3, ray_pos: Vector3, r
 	
 	return tmax >= max(tmin, 0.0)
 
+func _intersect_map_object(ray_pos: Vector3, ray_dir: Vector3, mo: MapObject) -> float:
+	var nearest_intersect = -1.0
+	for element in mo.get_children():
+		var cs = element as CollisionShape3D
+		if cs:
+			if cs.shape is BoxShape3D:
+				# ATM assume it is axis aligned
+				var box: BoxShape3D = cs.shape
+				var box_min: Vector3 = cs.get_parent_node_3d().position + cs.position - box.size
+				var box_max: Vector3 = cs.get_parent_node_3d().position + cs.position + box.size
+				var dist = _ray_intersects_box(box_min, box_max, ray_pos, ray_dir)
+				if nearest_intersect < 0 or dist >= 0.0:
+					nearest_intersect = dist
+			elif cs.shape is SphereShape3D:
+				var sphere: SphereShape3D = cs.shape
+				var sphere_centre: Vector3 = cs.get_parent_node_3d().position + cs.position
+				var dist: float = _ray_intersects_sphere(sphere_centre, sphere.radius, ray_pos, \
+					ray_dir)
+				if dist >= 0.0 and (nearest_intersect < 0 or dist < nearest_intersect):
+					nearest_intersect = dist
+#			print("player_ray_intersects_sphere:", sphere_centre, sphere.radius, ray_pos, \
+#				ray_dir)
+#				print("player_ray_intersects_sphere:", sphere_centre, sphere.radius, ray_pos, \
+#					ray_dir)
+			else:
+				print("Warning Unknown static object shape type:'%s'" % cs.shape.get_class())
+	return nearest_intersect
+
 func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist: float) -> MapObject:
 	var ray_end = ray_pos + ray_dir * max_dist
 	
-	print("ray:", ray_pos, "|", ray_dir)
-	for chunk in chunks:
-		print("chunk-bounds:", chunk.bounds)
-		var intersects = chunk.bounds.intersects_segment(ray_pos, ray_end)
-		print("intersects:", intersects)
-		if intersects:
-			continue
-		
-		
-#	for co in static_objects:
-#		if co.shape is BoxShape3D:
-#			# ATM assume it is axis aligned
-#			var box: BoxShape3D = co.shape
-#			var box_min: Vector3 = co.get_parent_node_3d().position + co.position - box.size
-#			var box_max: Vector3 = co.get_parent_node_3d().position + co.position + box.size
-#			if _ray_intersects_box(box_min, box_max, ray_pos, ray_dir):
-##				print("player_ray_intersects_box:", box_min, box_max, ray_pos, ray_dir)
-#				return co.get_parent_node_3d()
-#		elif co.shape is SphereShape3D:
-#			var sphere: SphereShape3D = co.shape
-#			var sphere_centre: Vector3 = co.get_parent_node_3d().position + co.position
-#			var dist: float = _ray_intersects_sphere(sphere_centre, sphere.radius, ray_pos, ray_dir)
-##			print("player_ray_intersects_sphere:", sphere_centre, sphere.radius, ray_pos, \
-##				ray_dir)
-#			if dist >= 0.0:
-##				print("player_ray_intersects_sphere:", sphere_centre, sphere.radius, ray_pos, \
-##					ray_dir)
-#				return co.get_parent_node_3d()
-#		else:
-#			print("Warning Unknown static object shape type:'%s'" % co.shape.get_class())
+	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+	query.from = ray_pos
+	query.to = ray_pos + ray_dir * max_dist
 	
-	return null
+	var result = PhysicsServer3D.space_get_direct_state(space_rid).intersect_ray(query)
+	print("result:", result)
+	return
+	
+	
+	print("ray:", ray_pos, "|", ray_dir)
+	var nearest_dist: float = -1.0
+	var nearest_intersection: MapObject = null
+#	for chunk in chunks:
+#		print("chunk-bounds:", chunk.bounds)
+#		var intersects = chunk.bounds.intersects_segment(ray_pos, ray_end)
+#		print("intersects:", intersects)
+#		if intersects:
+#			for child in chunk.get_children():
+#				var mo: MapObject = child as MapObject
+#				if mo and mo.object_type == MapObject.ObjectType.StaticInteractable:
+#					var dist: float = _intersect_map_object(ray_pos, ray_dir, child)
+#					if dist >= 0.0 and (nearest_dist < 0.0 or dist < nearest_dist):
+#						nearest_dist = dist
+#						nearest_intersection = child
+	
+	return nearest_intersection

@@ -102,7 +102,7 @@ func _ready():
 ###################### Network Callbacks ######################
 ###############################################################
 
-func _on_hero_state_received(server_light: int, server_hitpoints: int, server_satiation: float):
+func _on_hero_state_received(_server_light: int, server_hitpoints: int, server_satiation: float):
 	hitpoints = server_hitpoints
 	satiation = server_satiation
 	_state_label.text = "food:%d" % [satiation]
