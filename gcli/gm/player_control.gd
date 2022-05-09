@@ -45,6 +45,7 @@ var _control_events: Array
 enum ControlMode {
 	NULL = 0,
 	Default,
+	Interaction,
 	LeftDown,
 	RightDown,
 	CameraOrientation,
@@ -77,8 +78,9 @@ func _process(_delta: float) -> void:
 					var _game_world: GameWorld = get_node("/root/Game/World") as GameWorld
 					var screen_position = event[1]
 					var result = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
-						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 20)
-					print("get_picking_collision:", result)
+						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 120)
+					if result:
+						_control_mode = ControlMode.Interaction
 				ControlEvents.CameraOrientationMotion:
 					var mm: Vector2 = event[1]
 					$PlayerHero.adjust_yaw(mm.x)

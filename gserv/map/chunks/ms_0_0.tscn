@@ -199,7 +199,13 @@ visible = false
 transform = Transform3D(128, 0, 0, 0, 1, 0, 0, 0, 224, -16, -0.5, 21)
 
 [node name="GreenGrid2" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, -53.5335, -0.5, -239.416)
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, -77.4881, -0.5, -239.416)
+
+[node name="GreenGrid5" parent="." instance=ExtResource( "10_kjf06" )]
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, 177.983, -15.3052, -232.085)
+
+[node name="GreenGrid6" parent="." instance=ExtResource( "10_kjf06" )]
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, 210.546, -15.3052, -8.0853)
 
 [node name="GreyGrid" parent="." instance=ExtResource( "6_wlfql" )]
 transform = Transform3D(-58.0781, 101.571, 51.9073, -61.8235, 20.9206, -110.11, -95.8582, -75.0317, 39.5657, -102.954, -19.6179, -0.202621)

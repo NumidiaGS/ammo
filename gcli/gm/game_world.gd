@@ -22,6 +22,8 @@ var chunks: Array
 
 var _temp_chunk_o_trees: bool = false
 
+var _bodies: Dictionary= {}
+
 func reset_chunk_trees(_chunk_location: Vector2i, lumber_tree_list: Array) -> void:
 	if _temp_chunk_o_trees:
 		print("TODO -- trees already set")
@@ -79,6 +81,7 @@ func add_chunk(map_chunk: MapChunk) -> void:
 				PhysicsServer3D.body_set_state(body_rid, PhysicsServer3D.BODY_STATE_TRANSFORM, \
 					mo.transform)
 				PhysicsServer3D.body_set_ray_pickable(body_rid, true)
+				_bodies[body_rid] = mo
 			else:
 				print("no shapes found for static-interactable!:", mo.resource_id)
 	
@@ -233,20 +236,23 @@ func _intersect_map_object(ray_pos: Vector3, ray_dir: Vector3, mo: MapObject) ->
 	return nearest_intersect
 
 func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist: float) -> MapObject:
-	var ray_end = ray_pos + ray_dir * max_dist
 	
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 	query.from = ray_pos
 	query.to = ray_pos + ray_dir * max_dist
 	
 	var result = PhysicsServer3D.space_get_direct_state(space_rid).intersect_ray(query)
-	print("result:", result)
-	return
+	if result:
+		var body_rid = result["rid"]
+		var mo: MapObject = _bodies[body_rid]
+		print("result:", mo.object_uid, "-", mo.resource_id)
+		return mo
+	return null
 	
 	
-	print("ray:", ray_pos, "|", ray_dir)
-	var nearest_dist: float = -1.0
-	var nearest_intersection: MapObject = null
+#	print("ray:", ray_pos, "|", ray_dir)
+#	var nearest_dist: float = -1.0
+#	var nearest_intersection: MapObject = null
 #	for chunk in chunks:
 #		print("chunk-bounds:", chunk.bounds)
 #		var intersects = chunk.bounds.intersects_segment(ray_pos, ray_end)
@@ -259,5 +265,5 @@ func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist: float) 
 #					if dist >= 0.0 and (nearest_dist < 0.0 or dist < nearest_dist):
 #						nearest_dist = dist
 #						nearest_intersection = child
-	
-	return nearest_intersection
+#
+#	return nearest_intersection
