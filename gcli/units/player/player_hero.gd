@@ -1,3 +1,8 @@
+# Copyright (C) Numidia Game Studios, Inc - All Rights Reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary souce code for the Augustine MMO project.
+# Created by Adam Rasburn <AdamRasburn@proton.me>, January 2022
+
 extends CharacterBody3D
 
 class_name PlayerHero
@@ -102,7 +107,7 @@ func _ready():
 ###################### Network Callbacks ######################
 ###############################################################
 
-func _on_hero_state_received(server_light: int, server_hitpoints: int, server_satiation: float):
+func _on_hero_state_received(_server_light: int, server_hitpoints: int, server_satiation: float):
 	hitpoints = server_hitpoints
 	satiation = server_satiation
 	_state_label.text = "food:%d" % [satiation]

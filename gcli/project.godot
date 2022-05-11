@@ -103,6 +103,7 @@ d_use={
 vulkan/staging_buffer/max_size_mb=512
 shadows/directional_shadow/size=1024
 shadows/directional_shadow/size.mobile=1024
+textures/default_filters/use_nearest_mipmap_filter=true
 environment/ssao/quality=0
 environment/ssil/quality=0
 environment/glow/upscale_mode=0

@@ -1,3 +1,8 @@
+# Copyright (C) Numidia Game Studios, Inc - All Rights Reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary souce code for the Augustine MMO project.
+# Created by Adam Rasburn <AdamRasburn@proton.me>, March 2022
+
 extends Node3D
 
 class_name PlayerControl
@@ -45,6 +50,7 @@ var _control_events: Array
 enum ControlMode {
 	NULL = 0,
 	Default,
+	Interaction,
 	LeftDown,
 	RightDown,
 	CameraOrientation,
@@ -77,7 +83,9 @@ func _process(_delta: float) -> void:
 					var _game_world: GameWorld = get_node("/root/Game/World") as GameWorld
 					var screen_position = event[1]
 					var result = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
-						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 20)
+						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 120)
+					if result:
+						_control_mode = ControlMode.Interaction
 				ControlEvents.CameraOrientationMotion:
 					var mm: Vector2 = event[1]
 					$PlayerHero.adjust_yaw(mm.x)

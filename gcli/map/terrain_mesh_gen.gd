@@ -1,3 +1,8 @@
+# Copyright (C) Numidia Game Studios, Inc - All Rights Reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary souce code for the Augustine MMO project.
+# Created by Adam Rasburn <AdamRasburn@proton.me>, March 2022
+
 extends Object
 
 class_name TerrainMeshGen
