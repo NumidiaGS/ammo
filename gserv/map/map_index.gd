@@ -182,25 +182,28 @@ func _encode_map_chunk_environment(map_chunk: EditorMapChunk) -> PackedByteArray
 	var pba: PackedByteArray = []
 	var SIZE = 4 + 2 * 2 + 2 # pba.size() + location(x2) + child_count :- set below
 	
-	print("map_chunk.height_map:", map_chunk.height_map)
-	var ctx: CompressedTexture2D = ResourceLoader.load(map_chunk.height_map, \
-		"", ResourceLoader.CACHE_MODE_IGNORE)
-	var img: Image = ctx.get_image()
-	var img_pba: PackedByteArray = img.data["data"]
-	print("img_pba.size():", img_pba.size())
+	# Height Map Stuff (Not used at the moment
+#	print("map_chunk.height_map:", map_chunk.height_map)
+#	var ctx: CompressedTexture2D = ResourceLoader.load(map_chunk.height_map, \
+#		"", ResourceLoader.CACHE_MODE_IGNORE)
+#	var img: Image = ctx.get_image()
+#	var img_pba: PackedByteArray = img.data["data"]
+#	print("img_pba.size():", img_pba.size())
 	
-	const TerrainRes: int = 256
-	pba.resize(SIZE + TerrainRes * TerrainRes)
-	
-	var i = 0
-	for r in range(0, TerrainRes):
-		for c in range(0, TerrainRes):
-			var idx = (1024 / TerrainRes) * (r * 1024 * 3 + c * 3)
-			pba.encode_u8(SIZE + i, img_pba.decode_u8(idx))
-			i += 1
+#	const TerrainRes: int = 256
+#	pba.resize(SIZE + TerrainRes * TerrainRes) Replace below line
+	pba.resize(SIZE)
+#
+#	var i = 0
+#	for r in range(0, TerrainRes):
+#		for c in range(0, TerrainRes):
+#			var idx = (1024 / TerrainRes) * (r * 1024 * 3 + c * 3)
+#			pba.encode_u8(SIZE + i, img_pba.decode_u8(idx))
+#			i += 1
 	
 	var child_count: int = 0
-	var pba_offset: int = SIZE + TerrainRes * TerrainRes
+#	var pba_offset: int = SIZE + TerrainRes * TerrainRes Replace below line
+	var pba_offset: int = SIZE
 	for child in map_chunk.get_children():
 		var res = _encode_map_child_to_pba(pba, pba_offset, Vector3.ZERO, child)
 		var was_parsed: bool = res[0]

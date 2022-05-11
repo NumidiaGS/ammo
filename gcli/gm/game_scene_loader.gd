@@ -253,9 +253,9 @@ func _decode_map_chunk(pba: PackedByteArray) -> MapChunk:
 	var child_count = pba.decode_u16(pba_offset)
 	pba_offset += 2
 	
-	var _mi: MeshInstance3D = TerrainMeshGen.create_mesh(pba, pba_offset)
+#	var _mi: MeshInstance3D = TerrainMeshGen.create_mesh(pba, pba_offset)
 #	map_chunk.add_child(mi)
-	pba_offset += TerrainMeshGen.TerrainRes * TerrainMeshGen.TerrainRes
+#	pba_offset += TerrainMeshGen.TerrainRes * TerrainMeshGen.TerrainRes
 	
 	while pba_offset < pba_expected_size and child_count > 0:
 		var res = _decode_map_child(pba, pba_offset)
