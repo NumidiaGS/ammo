@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hfgv6at1giod"]
+[gd_scene load_steps=12 format=3 uid="uid://hfgv6at1giod"]
 
 [ext_resource type="Script" path="res://map/editor_map_chunk.gd" id="1_a380h"]
 [ext_resource type="PackedScene" uid="uid://b7a4o4dr688af" path="res://map/assets/flax_bush/flax_bush.tscn" id="2_hkv5b"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://map/kingdom_holding.gd" id="4_dk0sf"]
 [ext_resource type="PackedScene" uid="uid://cc6gnlx7oo2v5" path="res://map/assets/farm/farm_dirt_patch.tscn" id="5_wffpf"]
 [ext_resource type="PackedScene" uid="uid://iqug512ehkhh" path="res://map/assets/grey_grid/grey_grid.tscn" id="6_wlfql"]
-[ext_resource type="PackedScene" uid="uid://dhj3y6eq7rws7" path="res://map/assets/water_cell/water_cell.tscn" id="7_pcgbo"]
 [ext_resource type="Script" path="res://map/spawn_area.gd" id="8_xdchc"]
 [ext_resource type="PackedScene" uid="uid://brhcn0qnyf41v" path="res://map/assets/tree/tree.tscn" id="9_vtlk1"]
 [ext_resource type="PackedScene" uid="uid://b8dyk0tguhq11" path="res://map/assets/green_grid/green_grid.tscn" id="10_kjf06"]
@@ -18,7 +17,7 @@ script = ExtResource( "1_a380h" )
 height_map = "res://map/chunks/heightmap.png"
 
 [node name="FlaxBush" parent="." instance=ExtResource( "2_hkv5b" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 58)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8695, 0, 16.0893)
 object_type = null
 
 [node name="BerryBush" parent="." instance=ExtResource( "3_s83uw" )]
@@ -26,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.8151, 0, -57.9774)
 object_type = null
 
 [node name="BerryBush2" parent="." instance=ExtResource( "3_s83uw" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.9359, 0, -61.9001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.2, 0, 67.7505)
 object_type = null
 
 [node name="BerryBush3" parent="." instance=ExtResource( "3_s83uw" )]
@@ -38,11 +37,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2715, 0, -44.3238)
 object_type = null
 
 [node name="BerryBush5" parent="." instance=ExtResource( "3_s83uw" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.2401, 0, -79.668)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.8544, 0, -56.6908)
 object_type = null
 
 [node name="BerryBush6" parent="." instance=ExtResource( "3_s83uw" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8625, 0, -84.101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9124, 0, -78.6845)
 object_type = null
 
 [node name="Farm" type="Node3D" parent="."]
@@ -132,13 +131,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.9263, 7.62939e-06, 64.1409
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6595, 7.62939e-06, 59.8118)
 
 [node name="Tree19" parent="Forest" instance=ExtResource( "9_vtlk1" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.359, 7.62939e-06, 39.5682)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1807, 7.62939e-06, 92.2269)
 
 [node name="Tree20" parent="Forest" instance=ExtResource( "9_vtlk1" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7228, 7.62939e-06, 50.8935)
 
 [node name="Tree21" parent="Forest" instance=ExtResource( "9_vtlk1" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1678, 7.62939e-06, 44.1678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.9895, 7.62939e-06, 96.8265)
 
 [node name="Tree22" parent="Forest" instance=ExtResource( "9_vtlk1" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0766, 7.62939e-06, 56.9259)
@@ -147,10 +146,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0766, 7.62939e-06, 56.925
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.41774, 7.62939e-06, 43.8701)
 
 [node name="Tree24" parent="Forest" instance=ExtResource( "9_vtlk1" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95086, 7.62939e-06, 26.0006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8709, 7.62939e-06, 78.6593)
 
 [node name="Tree25" parent="Forest" instance=ExtResource( "9_vtlk1" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1442, 7.62939e-06, 23.8022)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.9659, 7.62939e-06, 76.4609)
 
 [node name="Tree26" parent="Forest" instance=ExtResource( "9_vtlk1" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.346, 7.62939e-06, 19.6749)
@@ -191,45 +190,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89039, -7.62939e-06, 74.05
 [node name="Tree10" parent="Forest" instance=ExtResource( "9_vtlk1" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.39961, -1.52588e-05, 59.326)
 
-[node name="BulletinBoard" parent="." instance=ExtResource( "10_m35wo" )]
-transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 3, -31.7444, 0, -4.72688)
-visible = false
-
 [node name="GreenGrid" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(128, 0, 0, 0, 1, 0, 0, 0, 224, -16, -0.5, 21)
-
-[node name="GreenGrid2" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, -77.4881, -0.5, -239.416)
-
-[node name="GreenGrid5" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, 177.983, -15.3052, -232.085)
-
-[node name="GreenGrid6" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 224, 210.546, -15.3052, -8.0853)
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, 0, -0.5, 0)
 
 [node name="GreyGrid" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(-58.0781, 101.571, 51.9073, -61.8235, 20.9206, -110.11, -95.8582, -75.0317, 39.5657, -102.954, -19.6179, -0.202621)
-
-[node name="GreyGrid2" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(-35.0129, -82.6354, -91.2661, -6.97044, 96.0631, -84.3047, 122.921, -18.0905, -30.777, -98.437, -19.6179, 59.8269)
-
-[node name="GreyGrid3" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(77.2224, -27.2265, -98.3841, 12.1103, 124.936, -25.0688, 101.361, 5.8157, 77.9495, -111.787, -32.3201, -170.72)
-
-[node name="WaterCell" parent="." instance=ExtResource( "7_pcgbo" )]
-transform = Transform3D(64, 0, 0, 0, 32, 0, 0, 0, 32, -116.54, 13.8135, -109.338)
-
-[node name="WaterCell2" parent="." instance=ExtResource( "7_pcgbo" )]
-transform = Transform3D(22.6882, 29.9218, 0, -59.8435, 11.3441, 0, 0, 0, 32, -88.017, -6.10788, -109.441)
-
-[node name="WaterCell3" parent="." instance=ExtResource( "7_pcgbo" )]
-transform = Transform3D(127.986, 0.480296, 0, -1.92118, 31.9964, 0, 0, 0, 32, -12.3704, -16.6461, -109.441)
-
-[node name="WaterCell5" parent="." instance=ExtResource( "7_pcgbo" )]
-transform = Transform3D(17.8543, 0.0428527, -31.9221, -4.91455, 31.9941, 0, 255.329, 0.612822, 2.2322, 50.0471, -34.3366, 15.7511)
-
-[node name="WaterCell6" parent="." instance=ExtResource( "7_pcgbo" )]
-transform = Transform3D(26.6407, 0.0499878, -31.8262, -3.84237, 31.9964, 7.78185e-09, 254.581, 0.477688, 3.33047, 75.9783, -33.8647, 4.9468)
+transform = Transform3D(256, 0, 0, 0, 62.09, -62.0751, 0, 15.5188, 248.36, 0, 0.233084, 256.036)
 
 [node name="GreyGrid4" parent="." instance=ExtResource( "6_wlfql" )]
 transform = Transform3D(4, 0, 0, 0, 32, 0, 0, 0, 256, 49.2924, -16.7785, 38.3214)
@@ -241,7 +206,7 @@ transform = Transform3D(128, 0, 0, 0, 0.941776, 5.37985, 0, -0.336241, 15.0684, 
 transform = Transform3D(128, 0, 0, 0, 0.942057, -5.36723, 0, 0.335452, 15.0729, -16.4145, -3.27486, -120.037)
 
 [node name="Flint" parent="." instance=ExtResource( "11_2lep2" )]
-transform = Transform3D(4.54927, -1.24618, -0.807689, -0.136797, 7.83564, -0.200939, 6.57917, 1.02461, 0.554312, -51.7969, 2.02148, -34.4058)
+transform = Transform3D(8, 0, 0, 0, 7.8366, -0.201078, 0, 1.60862, 0.979575, -39.0018, 2.02148, 124.807)
 interaction_behaviour = 32
 
 [node name="BulletinBoard2" parent="." instance=ExtResource( "10_m35wo" )]
