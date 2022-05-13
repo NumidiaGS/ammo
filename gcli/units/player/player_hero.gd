@@ -53,6 +53,7 @@ const HERO_INPUT_Jump: int = 64
 const ServerPositionUpdateFrequency: float = 1.0 / 20.0
 var time_since_last_input_update: float = 0.0
 
+var _external_forward_command: bool = false
 var _key_w: bool = false
 var _key_s: bool = false
 var _key_a: bool = false
@@ -133,6 +134,9 @@ func on_player_hero_position_update(server_update_time: int, pos: Vector3, yaw: 
 func adjust_yaw(amount: float):
 	_mouse_delta_x += amount
 
+func move_forward(delta: float):
+	_external_forward_command = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _unhandled_key_input(event):
 	match event.keycode:
@@ -175,8 +179,9 @@ func _update_hero_control(delta: float):
 	
 	# Keyboard Movement
 	var control_input: int = 0
-	if _key_w:
+	if _key_w or _external_forward_command:
 #		_autorun_toggled = false
+		_external_forward_command = false
 		control_input |= HERO_INPUT_MoveForward
 	if _key_s:
 		control_input |= HERO_INPUT_MoveBackward

@@ -41,6 +41,7 @@ transform = Transform3D(0.606557, 0, 0, 0, 0.536513, 0, 0, 0, 0.673698, 0, 1.881
 shape = SubResource( "SphereShape3D_s00j1" )
 
 [node name="HeadMesh" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource( "SphereMesh_08dfq" )
 
 [node name="Backpack" type="CollisionShape3D" parent="."]
