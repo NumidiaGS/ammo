@@ -20,6 +20,8 @@ var mouse_right_released: bool = false
 var _mouse_down_position: Vector2 = Vector2.ZERO
 var mouse_motion: Vector2 = Vector2.ZERO
 
+var _picked_object: MapObject
+
 var _control_events: Array
 @onready var _game_world: GameWorld = get_node("/root/Game/World") as GameWorld
 
@@ -101,12 +103,12 @@ func _process(delta: float) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		ControlMode.ForwardMovementAndCameraOrientation:
 			$PlayerHero.move_forward(delta)
-#		ControlMode.Default:
-#			var screen_position = event[1]
-#			var result = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
-#				$PlayerHeroFollowCamera.project_ray_normal(screen_position), 120)
-#			if result:
-#				_control_mode = ControlMode.Interaction
+		ControlMode.Default:
+			var screen_position = get_viewport().get_mouse_position()
+			_picked_object = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
+				$PlayerHeroFollowCamera.project_ray_normal(screen_position), 12.0, \
+				$PlayerHero.position)
+			print("_pick_selection:", _picked_object)
 	
 	# Process View
 #	match _control_mode:
@@ -145,7 +147,9 @@ func register_input_event(event: InputEvent) -> int:
 			MOUSE_BUTTON_LEFT:
 				_mouse_left_down = mouse_button_event.pressed
 				if _mouse_left_down:
-					if _mouse_right_down:
+					if _picked_object:
+						print("_pick_selection:", _picked_object)
+					elif _mouse_right_down:
 						_control_mode = ControlMode.ForwardMovementAndCameraOrientation
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					else:

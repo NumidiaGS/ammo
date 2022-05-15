@@ -23,9 +23,9 @@ sky_material = SubResource( "ProceduralSkyMaterial_gl2lj" )
 [sub_resource type="Environment" id="Environment_axktj"]
 background_mode = 2
 background_color = Color(0.0901961, 0.0784314, 0.333333, 1)
-background_energy = 0.8
+background_energy = 0.75
 sky = SubResource( "Sky_2crxl" )
-tonemap_mode = 2
+tonemap_mode = 1
 glow_enabled = true
 
 [node name="Game" type="Node3D"]

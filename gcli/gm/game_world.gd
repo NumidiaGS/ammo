@@ -240,17 +240,18 @@ func _intersect_map_object(ray_pos: Vector3, ray_dir: Vector3, mo: MapObject) ->
 				print("Warning Unknown static object shape type:'%s'" % cs.shape.get_class())
 	return nearest_intersect
 
-func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist: float) -> MapObject:
+func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist_from_specific_pos: float, \
+	specific_pos: Vector3) -> MapObject:
 	
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 	query.from = ray_pos
-	query.to = ray_pos + ray_dir * max_dist
+	query.to = ray_pos + ray_dir * (max_dist_from_specific_pos + (ray_pos - specific_pos).length())
 	
 	var result = PhysicsServer3D.space_get_direct_state(space_rid).intersect_ray(query)
-	if result:
+	if result and (result["position"] - specific_pos).length() < max_dist_from_specific_pos:
 		var body_rid = result["rid"]
 		var mo: MapObject = _bodies[body_rid]
-		print("result:", mo.object_uid, "-", mo.resource_id)
+#		print("result:", mo.object_uid, "-", mo.resource_id)
 		return mo
 	return null
 	

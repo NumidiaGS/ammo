@@ -240,7 +240,7 @@ func _set_map_chunk_lumber_trees(_game_world: Object, map_chunk: EditorMapChunk,
 	mc_data.lumber_trees = []
 	
 	for child in map_chunk.get_children():
-		if child is SpawnArea:
+		if child.visible and child is SpawnArea:
 			var spawn_area = child as SpawnArea
 			if spawn_area.content == SpawnArea.ContentType.Forest:
 				for forest_node in spawn_area.get_children():
