@@ -108,7 +108,7 @@ func _process(delta: float) -> void:
 			_picked_object = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
 				$PlayerHeroFollowCamera.project_ray_normal(screen_position), 12.0, \
 				$PlayerHero.position)
-			print("_pick_selection:", _picked_object)
+#			print("_pick_selection:", _picked_object)
 	
 	# Process View
 #	match _control_mode:
@@ -148,7 +148,8 @@ func register_input_event(event: InputEvent) -> int:
 				_mouse_left_down = mouse_button_event.pressed
 				if _mouse_left_down:
 					if _picked_object:
-						print("_pick_selection:", _picked_object)
+						print("selection:", _picked_object)
+						pass
 					elif _mouse_right_down:
 						_control_mode = ControlMode.ForwardMovementAndCameraOrientation
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

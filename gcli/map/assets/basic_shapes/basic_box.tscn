@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3n1bttfflqm7"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_1d78e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lvyyi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4i1s"]
+
+[node name="BasicBox" type="Node3D"]
+script = ExtResource( "1_1d78e" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 9
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "BoxMesh_lvyyi" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_u4i1s" )

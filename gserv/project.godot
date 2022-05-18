@@ -58,6 +58,11 @@ _global_script_classes=[{
 "class": &"SpawnArea",
 "language": &"GDScript",
 "path": "res://map/spawn_area.gd"
+}, {
+"base": "Object",
+"class": &"TileMapGenerator",
+"language": &"GDScript",
+"path": "res://src/tile_map_gen.gd"
 }]
 _global_script_class_icons={
 "EditorMapChunk": "",
@@ -69,7 +74,8 @@ _global_script_class_icons={
 "PlayerAccount": "",
 "QuadTree": "",
 "SerializedMapChunk": "",
-"SpawnArea": ""
+"SpawnArea": "",
+"TileMapGenerator": ""
 }
 
 [application]
