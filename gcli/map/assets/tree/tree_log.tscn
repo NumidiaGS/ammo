@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://qv0pe8mvydi"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_e7f4e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p6qwe"]
+seed = 9
+domain_warp_enabled = true
+domain_warp_amplitude = 30.141
+domain_warp_frequency = 0.04
+domain_warp_fractal_type = 2
+domain_warp_fractal_octaves = 4
+domain_warp_fractal_lacunarity = 6.037
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_oukn7"]
+noise = SubResource( "FastNoiseLite_p6qwe" )
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmpte"]
+albedo_color = Color(0.568627, 0.211765, 0.172549, 1)
+albedo_texture = SubResource( "NoiseTexture_oukn7" )
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qjp4m"]
+material = SubResource( "StandardMaterial3D_lmpte" )
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_23vaj"]
+
+[node name="TreeLog" type="Node3D"]
+script = ExtResource( "1_e7f4e" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 100
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "CylinderMesh_qjp4m" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_23vaj" )

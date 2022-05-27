@@ -10,3 +10,4 @@ water_cell;30;water_cell/;res://map/assets/water_cell/water_cell.tscn
 farm_dirt_patch;40;farm/;res://map/assets/farm/farm_dirt_patch.tscn
 bulletin_board;50;bulletin_board/;res://map/assets/bulletin_board/bulletin_board.tscn
 small_generic;60;small_generic/;res://map/assets/small_generic/small_generic.tscn
+tree_log;100;tree/;res://map/assets/tree/tree_log.tscn

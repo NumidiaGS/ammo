@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://brltc4c32uayb"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_vxdq7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6fxb"]
+albedo_color = Color(0.694118, 0.25098, 0.219608, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e4hue"]
+material = SubResource( "StandardMaterial3D_e6fxb" )
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evyrq"]
+
+[node name="TreeLog" type="Node3D"]
+script = ExtResource( "1_vxdq7" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 100
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "CylinderMesh_e4hue" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_evyrq" )
