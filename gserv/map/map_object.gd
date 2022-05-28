@@ -19,6 +19,7 @@ var object_uid: int
 # ? Values are permitted for 2 bytes (u16) so between 0 to 65,535
 enum ObjectType {   NULL = 0,
 					ServerOnly = 10,
+					ServerCompositeNode = 11,
 					KingdomHolding = 20,
 					StaticSolid = 30,
 					StaticInteractable = 35,

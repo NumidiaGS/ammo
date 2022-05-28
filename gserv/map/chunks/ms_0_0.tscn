@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sc3nqewbpa8h"]
+[gd_scene load_steps=16 format=3 uid="uid://sc3nqewbpa8h"]
 
 [ext_resource type="Script" path="res://map/editor_map_chunk.gd" id="1_a380h"]
 [ext_resource type="PackedScene" uid="uid://b7a4o4dr688af" path="res://map/assets/flax_bush/flax_bush.tscn" id="2_hkv5b"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dhj3y6eq7rws7" path="res://map/assets/water_cell/water_cell.tscn" id="13_ieei7"]
 [ext_resource type="PackedScene" uid="uid://brltc4c32uayb" path="res://map/assets/tree/tree_log.tscn" id="13_oq8vj"]
 [ext_resource type="PackedScene" uid="uid://mf0bsytp2ahi" path="res://map/assets/teal_grid/teal_grid.tscn" id="14_w4cph"]
+[ext_resource type="Script" path="res://map/map_object.gd" id="15_x1422"]
 
 [node name="Map_0_0" type="Node3D"]
 script = ExtResource( "1_a380h" )
@@ -273,10 +274,10 @@ transform = Transform3D(6.9282, 0.5, 0, -4, 0.866025, 0, 0, 0, 5, -8.71131, 1.56
 transform = Transform3D(4.76837e-07, 0, -5, -4, 0.866025, 0, 6.9282, 0.5, 2.98023e-07, -16.054, 5.11598, 8)
 
 [node name="GreenGrid2" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, -123.859, -0.5, 83.799)
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, -123.859, -0.5, 84)
 
 [node name="GreenGrid33" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, 148, -0.5, 94.2854)
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, 148, -0.5, 94)
 
 [node name="GreenGrid34" parent="." instance=ExtResource( "10_kjf06" )]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 120, 18, -0.5, -83.9)
@@ -291,7 +292,7 @@ transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 6, -0.5, -86)
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 30, -0.5, -86)
 
 [node name="GreenGrid42" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 20, 30, -0.5, -42)
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 18, 30, -0.5, -43)
 
 [node name="GreenGrid46" parent="." instance=ExtResource( "10_kjf06" )]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 36, 30, -0.5, -122)
@@ -306,16 +307,22 @@ transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 4, 6, -0.5, -66)
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 28, 6, -0.5, -38)
 
 [node name="GreenGrid35" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 120, 42, -0.5, -87)
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 120, 42, -0.5, -94)
+
+[node name="GreenGrid48" parent="." instance=ExtResource( "10_kjf06" )]
+transform = Transform3D(24, 0, 0, 0, 1, 0, 0, 0, 42, 60, -0.5, -55)
+
+[node name="GreenGrid49" parent="." instance=ExtResource( "10_kjf06" )]
+transform = Transform3D(24, 0, 0, 0, 1, 0, 0, 0, 42, 60, -0.5, -117)
 
 [node name="GreenGrid47" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(48, 0, 0, 0, 1, 0, 0, 0, 120, 72, -0.5, -87)
+transform = Transform3D(48, 0, 0, 0, 1, 0, 0, 0, 120, 96, -0.5, -87)
 
 [node name="GreenGrid36" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 120, -12, -0.5, -79)
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 88, -12, -0.5, -88)
 
 [node name="GreenGrid37" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 72, -3, -0.5, -56)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 48, -3, -0.5, -68)
 
 [node name="GreenGrid38" parent="." instance=ExtResource( "10_kjf06" )]
 transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 40, -3, -0.5, -130)
@@ -345,9 +352,6 @@ transform = Transform3D(8, 0, 0, 0, 4, 0, 0, 0, 8, -16, 1.81697, 8)
 transform = Transform3D(18, 0, 0, 0, 9.208, 0, 0, 0, 18, 43, 3.885, -109)
 visible = false
 
-[node name="GreyGrid2" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(24, 0, 0, 0, 9.20755, 0, 0, 0, 20, 60, 1.88532, -86)
-
 [node name="GreyGrid4" parent="." instance=ExtResource( "6_wlfql" )]
 transform = Transform3D(8.6814, 0, 0, 0, 9.20755, 0, 0, 0, 9.47062, 58.7951, -0.114676, -68.0951)
 visible = false
@@ -360,6 +364,9 @@ transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 6, -0.5, -74)
 
 [node name="GreyGrid15" parent="." instance=ExtResource( "6_wlfql" )]
 transform = Transform3D(18, 0, 0, 0, 1, 0, 0, 0, 18, 3, -0.5, -101)
+
+[node name="GreyGrid16" parent="." instance=ExtResource( "6_wlfql" )]
+transform = Transform3D(24, 0, 0, 0, 1, 0, 0, 0, 20, 59.9483, -0.5, -86)
 
 [node name="GreyGrid13" parent="." instance=ExtResource( "6_wlfql" )]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 30, -0.5, -58)
@@ -384,13 +391,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 18.716, 2.5, -63.881)
 visible = false
 
 [node name="GreyGrid10" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 54, 2.5, -64)
-
-[node name="GreyGrid3" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(22, 0, 0, 0, 5.261, 0, 0, 0, 12, 60, 9.14678, -86)
-
-[node name="GreyGrid11" parent="." instance=ExtResource( "6_wlfql" )]
-transform = Transform3D(20, 0, 0, 0, 5.261, 0, 0, 0, 6, 60, 13.1468, -86)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 7, 96.4345, 2.5, -64)
 
 [node name="BasicBox" parent="." instance=ExtResource( "13_gmfp3" )]
 transform = Transform3D(6, 0, 0, 0, 8, 0, 0, 0, 1, 39.054, 4, -126.487)
@@ -550,144 +551,750 @@ transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 30, -0.5, -98)
 [node name="BasicBox32" parent="." instance=ExtResource( "13_gmfp3" )]
 transform = Transform3D(10, 0, 0, 0, 2, 0, 0, 0, 10, 30, 1, -98)
 
-[node name="TreeLog" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TownHall" type="Node3D" parent="."]
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="TreeLog13" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 49.0838, 2.5, -95)
+
+[node name="TreeLog14" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 49.0838, 2.5, -77)
+
+[node name="TreeLog15" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 10, 0, 0, 0, 2, 49.0838, 5, -89)
+
+[node name="TreeLog16" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 10, 0, 0, 0, 2, 49.0838, 5, -83)
+
+[node name="TreeLog17" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 71.0838, 2.5, -95)
+
+[node name="TreeLog18" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 5, 0, 0, 0, 2, 71.0838, 2.5, -77)
+
+[node name="TreeLog19" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 10, 0, 0, 0, 2, 71.0838, 5, -89)
+
+[node name="TreeLog20" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 10, 0, 0, 0, 2, 71.0838, 5, -83)
+
+[node name="TreeLog39" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 0.5, -76.5)
+
+[node name="TreeLog40" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 1.5, -76.5)
+
+[node name="TreeLog41" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 2.5, -76.5)
+
+[node name="TreeLog42" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 3.5, -76.5)
+
+[node name="TreeLog43" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 4.5, -76.5)
+
+[node name="TreeLog64" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 24, 0, 0, 0, -1, -1, 2.14577e-06, 0, 60, 5.5, -76.5)
+
+[node name="TreeLog44" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 0.5, -95.5)
+
+[node name="TreeLog45" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 1.5, -95.5)
+
+[node name="TreeLog46" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 2.5, -95.5)
+
+[node name="TreeLog47" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 3.5, -95.5)
+
+[node name="TreeLog48" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 22, 0, 0, 0, -1, -1, 1.96695e-06, 0, 60, 4.5, -95.5)
+
+[node name="TreeLog49" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -1.85969e-06, 0, 0, 0, -1, 1.03316e-07, 18, 0, 71.5, 0.5, -86)
+
+[node name="TreeLog50" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -1.85969e-06, 0, 0, 0, -1, 1.03316e-07, 18, 0, 71.5, 1.5, -86)
+
+[node name="TreeLog51" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -1.85969e-06, 0, 0, 0, -1, 1.03316e-07, 18, 0, 71.5, 2.5, -86)
+
+[node name="TreeLog52" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -1.85969e-06, 0, 0, 0, -1, 1.03316e-07, 18, 0, 71.5, 3.5, -86)
+
+[node name="TreeLog53" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -1.85969e-06, 0, 0, 0, -1, 1.03316e-07, 18, 0, 71.5, 4.5, -86)
+
+[node name="TreeLog54" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 0.5, -92)
+
+[node name="TreeLog55" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 1.5, -92)
+
+[node name="TreeLog56" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 2.5, -92)
+
+[node name="TreeLog57" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 3.5, -92)
+
+[node name="TreeLog58" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 4.5, -92)
+
+[node name="TreeLog59" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 0.5, -80)
+
+[node name="TreeLog60" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 1.5, -80)
+
+[node name="TreeLog61" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 2.5, -80)
+
+[node name="TreeLog62" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 3.5, -80)
+
+[node name="TreeLog63" parent="TownHall" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, -6.19896e-07, 0, 0, 0, -1, 1.03316e-07, 6, 0, 48.5, 4.5, -80)
+
+[node name="Bed" type="Node3D" parent="TownHall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53.2963, 0, -80.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="Bed2" type="Node3D" parent="TownHall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.2963, 0, -80.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="Bed3" type="Node3D" parent="TownHall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 65.2963, 0, -80.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="Bed4" type="Node3D" parent="TownHall"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 66.6963, 0, -90.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="Bed5" type="Node3D" parent="TownHall"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 60.6963, 0, -90.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed5" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed5" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed5" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="Bed6" type="Node3D" parent="TownHall"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 54.6963, 0, -90.8675)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="BasicBox44" parent="TownHall/Bed6" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, -1.20729, 0, 0.652405)
+
+[node name="BasicBox45" parent="TownHall/Bed6" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.70729, 0.23069, 1.3371)
+
+[node name="BasicBox46" parent="TownHall/Bed6" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, -2.71117, 0.236469, -0.135094)
+
+[node name="LogHouse" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="Roof" type="Node3D" parent="LogHouse"]
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="TreeLog14" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog17" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 10.625, 4, -75)
+
+[node name="TreeLog15" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 10.625, 4, -75)
+
+[node name="TreeLog16" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog18" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 9.75, 4.5, -75)
+
+[node name="TreeLog19" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8.875, 5, -75)
+
+[node name="TreeLog20" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8, 5.5, -75)
+
+[node name="TreeLog22" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 6.27045, 5.51722, -75)
+
+[node name="TreeLog23" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 5.40042, 5.00861, -75)
+
+[node name="TreeLog24" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 4.5304, 4.5, -75)
+
+[node name="TreeLog25" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 3.66037, 3.99139, -75)
+
+[node name="TreeLog26" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 2.79035, 3.48278, -75)
+
+[node name="TreeLog21" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 7.125, 6, -75)
+
+[node name="TreeLog28" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -70.5)
+
+[node name="TreeLog29" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -70.5)
+
+[node name="TreeLog30" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -70.5)
+
+[node name="TreeLog31" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -79.5)
+
+[node name="TreeLog32" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -79.5)
+
+[node name="TreeLog33" parent="LogHouse/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -79.5)
+
+[node name="TreeLog" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -79)
 
-[node name="TreeLog37" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog37" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(2.48535, 0, -0.0560061, 0, 3, 0, 1.68018, 0, 0.0828452, 9.40136, 1.5, -80.4307)
 
-[node name="TreeLog2" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog2" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -79)
 
-[node name="TreeLog3" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog3" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -71)
 
-[node name="TreeLog4" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog4" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -71)
 
-[node name="TreeLog5" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog5" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 0.5, -75)
 
-[node name="TreeLog6" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog6" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 1.5, -75)
 
-[node name="TreeLog7" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog7" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 2.5, -75)
 
-[node name="TreeLog38" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog38" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.16569, -0.112012, 0, 0, 0, -0.2, 0.112012, 0.16569, 0, 8.44864, 1.8, -81.0747)
 
-[node name="TreeLog8" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog8" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 0.5, -75)
 
-[node name="TreeLog9" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog9" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 1.5, -75)
 
-[node name="TreeLog10" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog10" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 2.5, -75)
 
-[node name="TreeLog11" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog11" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 0.5, -70.5)
 
-[node name="TreeLog12" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog12" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 1.5, -70.5)
 
-[node name="TreeLog27" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog27" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 2.5, -70.5)
 
-[node name="TreeLog34" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog34" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 0.5, -79.5)
 
-[node name="TreeLog35" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog35" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 1.5, -79.5)
 
-[node name="TreeLog36" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog36" parent="LogHouse" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 2.5, -79.5)
 
-[node name="BasicBox41" parent="." instance=ExtResource( "13_gmfp3" )]
+[node name="BasicBox41" parent="LogHouse" instance=ExtResource( "13_gmfp3" )]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 5, 0, -74.5)
 
-[node name="BasicBox42" parent="." instance=ExtResource( "13_gmfp3" )]
+[node name="BasicBox42" parent="LogHouse" instance=ExtResource( "13_gmfp3" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.5, 0.23069, -73.8153)
 
-[node name="BasicBox43" parent="." instance=ExtResource( "13_gmfp3" )]
+[node name="BasicBox43" parent="LogHouse" instance=ExtResource( "13_gmfp3" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.49612, 0.236469, -75.2875)
 
-[node name="TreeLog14" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TealGrid" parent="LogHouse" instance=ExtResource( "14_w4cph" )]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 10.0001, 0.520862, -72.9904)
+
+[node name="LogHouse2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 0)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="Roof" type="Node3D" parent="LogHouse2"]
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="TreeLog14" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 11.5, 3.5, -75)
-visible = false
 
-[node name="TreeLog17" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog17" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 10.625, 4, -75)
-visible = false
 
-[node name="TreeLog15" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog15" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 10.625, 4, -75)
-visible = false
 
-[node name="TreeLog16" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog16" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 11.5, 3.5, -75)
-visible = false
 
-[node name="TreeLog18" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog18" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 9.75, 4.5, -75)
-visible = false
 
-[node name="TreeLog19" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog19" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8.875, 5, -75)
-visible = false
 
-[node name="TreeLog20" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog20" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8, 5.5, -75)
-visible = false
 
-[node name="TreeLog22" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog22" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 6.27045, 5.51722, -75)
-visible = false
 
-[node name="TreeLog23" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog23" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 5.40042, 5.00861, -75)
-visible = false
 
-[node name="TreeLog24" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog24" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 4.5304, 4.5, -75)
-visible = false
 
-[node name="TreeLog25" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog25" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 3.66037, 3.99139, -75)
-visible = false
 
-[node name="TreeLog26" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog26" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 2.79035, 3.48278, -75)
-visible = false
 
-[node name="TreeLog21" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog21" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 7.125, 6, -75)
-visible = false
 
-[node name="TreeLog28" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog28" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -70.5)
-visible = false
 
-[node name="TreeLog29" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog29" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -70.5)
-visible = false
 
-[node name="TreeLog30" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog30" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -70.5)
-visible = false
 
-[node name="TreeLog31" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog31" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -79.5)
-visible = false
 
-[node name="TreeLog32" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog32" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -79.5)
-visible = false
 
-[node name="TreeLog33" parent="." instance=ExtResource( "13_oq8vj" )]
+[node name="TreeLog33" parent="LogHouse2/Roof" instance=ExtResource( "13_oq8vj" )]
 transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -79.5)
-visible = false
 
-[node name="TealGrid" parent="." instance=ExtResource( "14_w4cph" )]
+[node name="TreeLog" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -79)
+
+[node name="TreeLog37" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2.48535, 0, -0.0560061, 0, 3, 0, 1.68018, 0, 0.0828452, 9.40136, 1.5, -80.4307)
+
+[node name="TreeLog2" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -79)
+
+[node name="TreeLog3" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -71)
+
+[node name="TreeLog4" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -71)
+
+[node name="TreeLog5" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 0.5, -75)
+
+[node name="TreeLog6" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 1.5, -75)
+
+[node name="TreeLog7" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 2.5, -75)
+
+[node name="TreeLog38" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.16569, -0.112012, 0, 0, 0, -0.2, 0.112012, 0.16569, 0, 8.44864, 1.8, -81.0747)
+
+[node name="TreeLog8" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 0.5, -75)
+
+[node name="TreeLog9" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 1.5, -75)
+
+[node name="TreeLog10" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 2.5, -75)
+
+[node name="TreeLog11" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 0.5, -70.5)
+
+[node name="TreeLog12" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 1.5, -70.5)
+
+[node name="TreeLog27" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 2.5, -70.5)
+
+[node name="TreeLog34" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 0.5, -79.5)
+
+[node name="TreeLog35" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 1.5, -79.5)
+
+[node name="TreeLog36" parent="LogHouse2" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 2.5, -79.5)
+
+[node name="BasicBox41" parent="LogHouse2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 5, 0, -74.5)
+
+[node name="BasicBox42" parent="LogHouse2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.5, 0.23069, -73.8153)
+
+[node name="BasicBox43" parent="LogHouse2" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.49612, 0.236469, -75.2875)
+
+[node name="TealGrid" parent="LogHouse2" instance=ExtResource( "14_w4cph" )]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 10.0001, 0.520862, -72.9904)
+
+[node name="LogHouse3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 16)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="Roof" type="Node3D" parent="LogHouse3"]
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="TreeLog14" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog17" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 10.625, 4, -75)
+
+[node name="TreeLog15" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 10.625, 4, -75)
+
+[node name="TreeLog16" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog18" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 9.75, 4.5, -75)
+
+[node name="TreeLog19" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8.875, 5, -75)
+
+[node name="TreeLog20" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8, 5.5, -75)
+
+[node name="TreeLog22" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 6.27045, 5.51722, -75)
+
+[node name="TreeLog23" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 5.40042, 5.00861, -75)
+
+[node name="TreeLog24" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 4.5304, 4.5, -75)
+
+[node name="TreeLog25" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 3.66037, 3.99139, -75)
+
+[node name="TreeLog26" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 2.79035, 3.48278, -75)
+
+[node name="TreeLog21" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 7.125, 6, -75)
+
+[node name="TreeLog28" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -70.5)
+
+[node name="TreeLog29" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -70.5)
+
+[node name="TreeLog30" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -70.5)
+
+[node name="TreeLog31" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -79.5)
+
+[node name="TreeLog32" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -79.5)
+
+[node name="TreeLog33" parent="LogHouse3/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -79.5)
+
+[node name="TreeLog" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -79)
+
+[node name="TreeLog37" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2.48535, 0, -0.0560061, 0, 3, 0, 1.68018, 0, 0.0828452, 9.40136, 1.5, -80.4307)
+
+[node name="TreeLog2" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -79)
+
+[node name="TreeLog3" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -71)
+
+[node name="TreeLog4" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -71)
+
+[node name="TreeLog5" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 0.5, -75)
+
+[node name="TreeLog6" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 1.5, -75)
+
+[node name="TreeLog7" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 2.5, -75)
+
+[node name="TreeLog38" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.16569, -0.112012, 0, 0, 0, -0.2, 0.112012, 0.16569, 0, 8.44864, 1.8, -81.0747)
+
+[node name="TreeLog8" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 0.5, -75)
+
+[node name="TreeLog9" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 1.5, -75)
+
+[node name="TreeLog10" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 2.5, -75)
+
+[node name="TreeLog11" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 0.5, -70.5)
+
+[node name="TreeLog12" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 1.5, -70.5)
+
+[node name="TreeLog27" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 2.5, -70.5)
+
+[node name="TreeLog34" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 0.5, -79.5)
+
+[node name="TreeLog35" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 1.5, -79.5)
+
+[node name="TreeLog36" parent="LogHouse3" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 2.5, -79.5)
+
+[node name="BasicBox41" parent="LogHouse3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 5, 0, -74.5)
+
+[node name="BasicBox42" parent="LogHouse3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.5, 0.23069, -73.8153)
+
+[node name="BasicBox43" parent="LogHouse3" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.49612, 0.236469, -75.2875)
+
+[node name="TealGrid" parent="LogHouse3" instance=ExtResource( "14_w4cph" )]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 10.0001, 0.520862, -72.9904)
+
+[node name="LogHouse4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 16)
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="Roof" type="Node3D" parent="LogHouse4"]
+script = ExtResource( "15_x1422" )
+object_type = 11
+interaction_behaviour = 1
+resource_id = 1
+
+[node name="TreeLog14" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog17" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 9, 0, 10.625, 4, -75)
+
+[node name="TreeLog15" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 10.625, 4, -75)
+
+[node name="TreeLog16" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 11.5, 3.5, -75)
+
+[node name="TreeLog18" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 9.75, 4.5, -75)
+
+[node name="TreeLog19" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8.875, 5, -75)
+
+[node name="TreeLog20" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 8, 5.5, -75)
+
+[node name="TreeLog22" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 6.27045, 5.51722, -75)
+
+[node name="TreeLog23" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 5.40042, 5.00861, -75)
+
+[node name="TreeLog24" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 4.5304, 4.5, -75)
+
+[node name="TreeLog25" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 3.66037, 3.99139, -75)
+
+[node name="TreeLog26" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.499169, 0, 0.866505, 0.866505, 0, -0.499169, 0, 10, 0, 2.79035, 3.48278, -75)
+
+[node name="TreeLog21" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 10, 0, 7.125, 6, -75)
+
+[node name="TreeLog28" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -70.5)
+
+[node name="TreeLog29" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -70.5)
+
+[node name="TreeLog30" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -70.5)
+
+[node name="TreeLog31" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 3.5, -79.5)
+
+[node name="TreeLog32" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 7, 4.5, -79.5)
+
+[node name="TreeLog33" parent="LogHouse4/Roof" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 2, 0, 0, 0, -1, -1, 1.78814e-07, 0, 7, 5.5, -79.5)
+
+[node name="TreeLog" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -79)
+
+[node name="TreeLog37" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2.48535, 0, -0.0560061, 0, 3, 0, 1.68018, 0, 0.0828452, 9.40136, 1.5, -80.4307)
+
+[node name="TreeLog2" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -79)
+
+[node name="TreeLog3" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 3, 1.5, -71)
+
+[node name="TreeLog4" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 11, 1.5, -71)
+
+[node name="TreeLog5" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 0.5, -75)
+
+[node name="TreeLog6" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 1.5, -75)
+
+[node name="TreeLog7" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 11.5, 2.5, -75)
+
+[node name="TreeLog38" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(0.16569, -0.112012, 0, 0, 0, -0.2, 0.112012, 0.16569, 0, 8.44864, 1.8, -81.0747)
+
+[node name="TreeLog8" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 0.5, -75)
+
+[node name="TreeLog9" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 1.5, -75)
+
+[node name="TreeLog10" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 7, 0, 2.5, 2.5, -75)
+
+[node name="TreeLog11" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 0.5, -70.5)
+
+[node name="TreeLog12" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 1.5, -70.5)
+
+[node name="TreeLog27" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 8, 0, 0, 4.76837e-07, -1, -1, 0, 5.96046e-08, 7, 2.5, -70.5)
+
+[node name="TreeLog34" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 0.5, -79.5)
+
+[node name="TreeLog35" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 1.5, -79.5)
+
+[node name="TreeLog36" parent="LogHouse4" instance=ExtResource( "13_oq8vj" )]
+transform = Transform3D(5.96046e-08, 5, 0, 0, 0, -1, -1, 4.47035e-07, 0, 5.5, 2.5, -79.5)
+
+[node name="BasicBox41" parent="LogHouse4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 3, 5, 0, -74.5)
+
+[node name="BasicBox42" parent="LogHouse4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.5, 0.23069, -73.8153)
+
+[node name="BasicBox43" parent="LogHouse4" instance=ExtResource( "13_gmfp3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.4, 3.49612, 0.236469, -75.2875)
+
+[node name="TealGrid" parent="LogHouse4" instance=ExtResource( "14_w4cph" )]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 10.0001, 0.520862, -72.9904)

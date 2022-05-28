@@ -17,6 +17,7 @@ var object_uid: int
 enum ObjectType {   NULL = 0,
 					ServerOnly = 10,
 					KingdomHolding = 20,
+					CompositeNode = 21,
 					StaticSolid = 30,
 					StaticInteractable = 35,
 					LightPickup = 50,
