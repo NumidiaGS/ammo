@@ -147,12 +147,12 @@ func register_input_event(event: InputEvent) -> int:
 			MOUSE_BUTTON_LEFT:
 				_mouse_left_down = mouse_button_event.pressed
 				if _mouse_left_down:
-					if _picked_object:
-						print("selection:", _picked_object)
-						pass
-					elif _mouse_right_down:
+					if _mouse_right_down:
 						_control_mode = ControlMode.ForwardMovementAndCameraOrientation
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					elif _picked_object:
+						print("selection:", _picked_object)
+						pass
 					else:
 						_time_left_down = Time.get_ticks_msec()
 						_control_mode = ControlMode.LeftDown
@@ -170,8 +170,9 @@ func register_input_event(event: InputEvent) -> int:
 								_control_events.append([ControlEvents.LeftMouseButtonClick])
 								# TODO ?? double-left-click?
 						_control_mode = ControlMode.Default
-						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-						get_viewport().warp_mouse(_mouse_down_position)
+						if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+							Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+							get_viewport().warp_mouse(_mouse_down_position)
 	elif event is InputEventMouseMotion:
 		var motion_event: InputEventMouseMotion = event as InputEventMouseMotion
 		match _control_mode:

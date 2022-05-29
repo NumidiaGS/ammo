@@ -274,7 +274,7 @@ transform = Transform3D(6.9282, 0.5, 0, -4, 0.866025, 0, 0, 0, 5, -8.71131, 1.56
 transform = Transform3D(4.76837e-07, 0, -5, -4, 0.866025, 0, 6.9282, 0.5, 2.98023e-07, -16.054, 5.11598, 8)
 
 [node name="GreenGrid2" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, -123.859, -0.5, 84)
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, -124, -0.5, 84)
 
 [node name="GreenGrid33" parent="." instance=ExtResource( "10_kjf06" )]
 transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, 148, -0.5, 94)
@@ -304,7 +304,10 @@ transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 4, 30, -0.5, -66)
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 4, 6, -0.5, -66)
 
 [node name="GreenGrid43" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 28, 6, -0.5, -38)
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 8, 6, -0.5, -48)
+
+[node name="GreenGrid50" parent="." instance=ExtResource( "10_kjf06" )]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 20, 8, -0.5, -34)
 
 [node name="GreenGrid35" parent="." instance=ExtResource( "10_kjf06" )]
 transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 120, 42, -0.5, -94)
@@ -770,6 +773,7 @@ interaction_behaviour = 1
 resource_id = 1
 
 [node name="Roof" type="Node3D" parent="LogHouse"]
+visible = false
 script = ExtResource( "15_x1422" )
 object_type = 11
 interaction_behaviour = 1

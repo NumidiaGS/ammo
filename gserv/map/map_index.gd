@@ -62,7 +62,7 @@ func _append_map_object_to_pba(pba: PackedByteArray, pba_offset: int, \
 				if not child is MapObject:
 					print("Node is not MapObject:", _get_node_path_string(child))
 					return [0, pba_offset]
-				var result = _append_map_object_to_pba(pba, pba_offset, _parent_offset \
+				var result = _encode_map_child_to_pba(pba, pba_offset, _parent_offset \
 					+ mi.position, child)
 				parsed_child_count += result[0]
 				pba_offset = result[1]
