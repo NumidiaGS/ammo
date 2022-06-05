@@ -151,7 +151,9 @@ func register_input_event(event: InputEvent) -> int:
 						_control_mode = ControlMode.ForwardMovementAndCameraOrientation
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					elif _picked_object:
-						print("selection:", _picked_object)
+						print("selection:", _picked_object, "[", \
+							_picked_object.interaction_behaviour, "]")
+						_begin_interact_with_object(_picked_object);
 						pass
 					else:
 						_time_left_down = Time.get_ticks_msec()
@@ -217,3 +219,8 @@ func register_input_event(event: InputEvent) -> int:
 					_control_events.append([ControlEvents.ForwardMovementAndCameraOrientationMotion, \
 						motion_event.relative])
 	return 0
+
+func _begin_interact_with_object(obj: MapObject):
+	match obj.interaction_behaviour:
+		_:
+			pass

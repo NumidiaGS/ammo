@@ -262,12 +262,16 @@ func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist_from_spe
 	
 	query.to = ray_pos + ray_dir * (max_dist_from_specific_pos + (ray_pos - specific_pos).length())
 	
+	# This doesn't work properly (seems not to get the nearest intersection) TODO
 	var result = PhysicsServer3D.space_get_direct_state(space_rid).intersect_ray(query)
 	if result and (result["position"] - specific_pos).length() < max_dist_from_specific_pos:
 		var body_rid = result["rid"]
 		var mo: MapObject = _bodies[body_rid]
-#		print("result:", mo.object_uid, "-", mo.resource_id)
-		return mo
+		if mo.object_type == MapObject.ObjectType.StaticInteractable:
+	#		print("result:", mo.object_uid, "-", mo.resource_id)
+			return mo
+		else:
+			print("result:", mo, " mo.object_type:", mo.object_type)
 	return null
 	
 	

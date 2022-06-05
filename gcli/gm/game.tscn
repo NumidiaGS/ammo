@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2jd4d5k1xsfa"]
+[gd_scene load_steps=14 format=3 uid="uid://c2jd4d5k1xsfa"]
 
 [ext_resource type="Script" path="res://gm/game.gd" id="1_mo07u"]
 [ext_resource type="Script" path="res://gm/game_world.gd" id="2_56x05"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://ui/GUI.gd" id="3_12a7h"]
 [ext_resource type="Script" path="res://ui/garden/garden_gui.gd" id="6_1d4kb"]
 [ext_resource type="Theme" uid="uid://suovxbxsbs4x" path="res://ui/gui_theme.tres" id="7_xk74w"]
-[ext_resource type="ArrayMesh" uid="uid://dgtlfjgbqkq4p" path="res://illuminati pyramid.obj" id="11_atiks"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl2lj"]
 sky_top_color = Color(0.623529, 0.792157, 0.937255, 1)
@@ -235,10 +234,6 @@ text = "???"
 offset_top = 51.0
 offset_right = 86.0
 offset_bottom = 55.0
-
-[node name="IlluminatiPyramid" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.38419e-08, -0.4, 0, 0, 0, 0.4, -0.4, -3.57628e-08, 0, -60.3448, -15.0844, -21.3571)
-mesh = ExtResource( "11_atiks" )
 
 [connection signal="pressed" from="GUI/Garden/QueueInfo/QueueButton" to="GUI/Garden" method="_on_queue_button_pressed"]
 [connection signal="pressed" from="GUI/Garden/QueueInfo/ExitButton" to="GUI/Garden" method="_on_queue_info_exit_pressed"]

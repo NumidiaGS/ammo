@@ -35,7 +35,8 @@ enum InteractionBehaviour { NULL = 0,
 							Stick = 30,
 							StoneShard = 31,
 							Flint = 32,
-							Stockpile = 40, }
+							CoreStockpile = 40,
+							CorePillar = 41, }
 @export var interaction_behaviour: InteractionBehaviour
 
 # ? Values are permitted for 2 bytes (u16) so between 0 to 65,535
