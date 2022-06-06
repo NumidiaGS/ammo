@@ -68,9 +68,11 @@ var outgoing_notifications: Array
 var _queued_notifications: Array
 
 func begin_async() -> int:
+	_init_world()
+	
 	_thread = Thread.new()
 	_quit_thread = false
-	var err: int = _thread.start(Callable(_thread_function))
+	var err: int = _thread.start(Callable(_threaded_process))
 	if err != OK:
 		_quit_thread = true
 	return err
@@ -82,11 +84,15 @@ func end_async():
 	_thread_mutex.unlock()
 	_thread.wait_to_finish()
 
+func _init_world():
+	var _map = TileMapGenerator.generate()
+			
+
 # Run here and exit.
 # The argument is the userdata passed from start().
 # If no argument was passed, this one still needs to
 # be here and it will be null.
-func _thread_function():
+func _threaded_process():
 	const TickUpdatePeriodUsecs: int = 1000000 / TargetTicksPerSecond
 	const DelayPeriodUsecs: int = 500
 	

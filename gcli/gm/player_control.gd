@@ -17,10 +17,13 @@ var mouse_left_pressed: bool = false
 var mouse_right_pressed: bool = false
 var mouse_left_released: bool = false
 var mouse_right_released: bool = false
-
+var _mouse_down_position: Vector2 = Vector2.ZERO
 var mouse_motion: Vector2 = Vector2.ZERO
 
+var _picked_object: MapObject
+
 var _control_events: Array
+@onready var _game_world: GameWorld = get_node("/root/Game/World") as GameWorld
 
 #var mouse_capture_enabled: bool = false
 #var interact_enabled: bool = false
@@ -50,7 +53,6 @@ var _control_events: Array
 enum ControlMode {
 	NULL = 0,
 	Default,
-	Interaction,
 	LeftDown,
 	RightDown,
 	CameraOrientation,
@@ -74,19 +76,16 @@ enum ControlEvents {
 
 const ClickTimeoutThreshold: int = 350
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Process events
 	if _control_events.size():
 		for event in _control_events:
 			match event[0]:
-				ControlEvents.LeftMouseButtonPress:
-					var _game_world: GameWorld = get_node("/root/Game/World") as GameWorld
-					var screen_position = event[1]
-					var result = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
-						$PlayerHeroFollowCamera.project_ray_normal(screen_position), 120)
-					if result:
-						_control_mode = ControlMode.Interaction
 				ControlEvents.CameraOrientationMotion:
+					var mm: Vector2 = event[1]
+					$PlayerHero.adjust_yaw(mm.x)
+					$PlayerHeroFollowCamera.adjust_pitch(mm.y)
+				ControlEvents.ForwardMovementAndCameraOrientationMotion:
 					var mm: Vector2 = event[1]
 					$PlayerHero.adjust_yaw(mm.x)
 					$PlayerHeroFollowCamera.adjust_pitch(mm.y)
@@ -102,6 +101,14 @@ func _process(_delta: float) -> void:
 			if Time.get_ticks_msec() - _time_right_down >= ClickTimeoutThreshold:
 				_control_mode = ControlMode.CameraOrientation
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		ControlMode.ForwardMovementAndCameraOrientation:
+			$PlayerHero.move_forward(delta)
+		ControlMode.Default:
+			var screen_position = get_viewport().get_mouse_position()
+			_picked_object = _game_world.get_picking_collision($PlayerHeroFollowCamera.position,
+				$PlayerHeroFollowCamera.project_ray_normal(screen_position), 12.0, \
+				$PlayerHero.position)
+#			print("_pick_selection:", _picked_object)
 	
 	# Process View
 #	match _control_mode:
@@ -121,6 +128,7 @@ func register_input_event(event: InputEvent) -> int:
 					else:
 						_time_right_down = Time.get_ticks_msec()
 						_control_mode = ControlMode.RightDown
+						_mouse_down_position = mouse_button_event.position
 						_control_events.append([ControlEvents.RightMouseButtonPress, \
 							mouse_button_event.position])
 						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -135,17 +143,24 @@ func register_input_event(event: InputEvent) -> int:
 								# TODO ?? double-right-click?
 						_control_mode = ControlMode.Default
 						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+						get_viewport().warp_mouse(_mouse_down_position)
 			MOUSE_BUTTON_LEFT:
 				_mouse_left_down = mouse_button_event.pressed
 				if _mouse_left_down:
 					if _mouse_right_down:
 						_control_mode = ControlMode.ForwardMovementAndCameraOrientation
 						Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					elif _picked_object:
+						print("selection:", _picked_object, "[", \
+							_picked_object.interaction_behaviour, "]")
+						_begin_interact_with_object(_picked_object);
+						pass
 					else:
 						_time_left_down = Time.get_ticks_msec()
 						_control_mode = ControlMode.LeftDown
 						_control_events.append([ControlEvents.LeftMouseButtonPress, \
 							mouse_button_event.position])
+						_mouse_down_position = mouse_button_event.position
 						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 				else:
 					if _mouse_right_down:
@@ -157,7 +172,9 @@ func register_input_event(event: InputEvent) -> int:
 								_control_events.append([ControlEvents.LeftMouseButtonClick])
 								# TODO ?? double-left-click?
 						_control_mode = ControlMode.Default
-						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+						if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+							Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+							get_viewport().warp_mouse(_mouse_down_position)
 	elif event is InputEventMouseMotion:
 		var motion_event: InputEventMouseMotion = event as InputEventMouseMotion
 		match _control_mode:
@@ -202,3 +219,8 @@ func register_input_event(event: InputEvent) -> int:
 					_control_events.append([ControlEvents.ForwardMovementAndCameraOrientationMotion, \
 						motion_event.relative])
 	return 0
+
+func _begin_interact_with_object(obj: MapObject):
+	match obj.interaction_behaviour:
+		_:
+			pass

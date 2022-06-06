@@ -1,6 +1,8 @@
 green_grid;5;green_grid/;res://map/assets/green_grid/green_grid.tscn
 grey_grid;6;grey_grid/;res://map/assets/grey_grid/grey_grid.tscn
 teal_grid;7;teal_grid/;res://map/assets/teal_grid/teal_grid.tscn
+green_cylinder;8;green_grid/;res://map/assets/green_grid/green_cylinder.tscn
+basic_box;9;basic_shapes/;res://map/assets/basic_shapes/basic_box.tscn
 tree;20;tree/;res://map/assets/tree/tree.tscn
 flax_bush;25;flax_bush/;res://map/assets/flax_bush/flax_bush.tscn
 berry_bush;26;berry_bush/;res://map/assets/berry_bush/berry_bush.tscn
@@ -8,3 +10,4 @@ water_cell;30;water_cell/;res://map/assets/water_cell/water_cell.tscn
 farm_dirt_patch;40;farm/;res://map/assets/farm/farm_dirt_patch.tscn
 bulletin_board;50;bulletin_board/;res://map/assets/bulletin_board/bulletin_board.tscn
 small_generic;60;small_generic/;res://map/assets/small_generic/small_generic.tscn
+tree_log;100;tree/;res://map/assets/tree/tree_log.tscn

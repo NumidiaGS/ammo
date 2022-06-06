@@ -29,14 +29,62 @@ var _temp_chunk_o_trees: bool = false
 
 var _bodies: Dictionary= {}
 
+func _init():
+	space_rid = PhysicsServer3D.space_create()
+
 func reset_chunk_trees(_chunk_location: Vector2i, lumber_tree_list: Array) -> void:
 	if _temp_chunk_o_trees:
 		print("TODO -- trees already set")
 		return
 	for lt in lumber_tree_list:
 		add_child(lt)
+		_add_map_object_to_physics_server(lt)
 	
 	_temp_chunk_o_trees = true
+
+func _add_map_object_to_physics_server(mo: MapObject) -> void:
+	var body_created: bool = false
+	var body_rid: RID
+	
+	for grand_child in mo.get_children():
+		var co: CollisionShape3D = grand_child as CollisionShape3D
+		if not co:
+			continue
+		
+		if body_created == false:
+			body_rid = PhysicsServer3D.body_create()
+			PhysicsServer3D.body_set_mode(body_rid, PhysicsServer3D.BODY_MODE_STATIC)
+			body_created = true
+		
+		var shape_rid: RID
+		if co.shape is BoxShape3D:
+			shape_rid = PhysicsServer3D.box_shape_create()
+			PhysicsServer3D.shape_set_data(shape_rid, (co.shape as BoxShape3D).size)
+			PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
+			print("--added box:", shape_rid)
+		elif co.shape is SphereShape3D:
+			shape_rid = PhysicsServer3D.sphere_shape_create()
+			PhysicsServer3D.shape_set_data(shape_rid, (co.shape as SphereShape3D).radius)
+			PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
+			print("--added sphere:", shape_rid)
+		else:
+			print("dont know what shape TODO")
+	
+	if body_created:
+		print("body_rid:", body_rid)
+		PhysicsServer3D.body_set_space(body_rid, space_rid)
+		PhysicsServer3D.body_set_state(body_rid, PhysicsServer3D.BODY_STATE_TRANSFORM, \
+			mo.transform)
+		if mo.object_type == MapObject.ObjectType.StaticInteractable:
+			print("setpickable:", mo)
+			PhysicsServer3D.body_set_ray_pickable(body_rid, \
+				mo.object_type == MapObject.ObjectType.StaticInteractable)
+		else:
+			PhysicsServer3D.body_set_ray_pickable(body_rid, false)
+#		print("rp:", mo.object_type == MapObject.ObjectType.StaticInteractable)
+		_bodies[body_rid] = mo
+	else:
+		print("no shapes found for static-interactable!:", mo.resource_id)
 
 func add_chunk(map_chunk: MapChunk) -> void:
 	for item in chunks:
@@ -48,47 +96,12 @@ func add_chunk(map_chunk: MapChunk) -> void:
 	chunks.append(map_chunk)
 	add_child(map_chunk)
 	
-	space_rid = PhysicsServer3D.space_create()
-	
 	for child in map_chunk.get_children():
 		var mo: MapObject = child as MapObject
-		if mo and mo.object_type == MapObject.ObjectType.StaticInteractable:
-			var body_created: bool = false
-			var body_rid: RID
+		if mo and (mo.object_type == MapObject.ObjectType.StaticInteractable or \
+			mo.object_type == MapObject.ObjectType.StaticSolid):
 			
-			for grand_child in mo.get_children():
-				var co: CollisionShape3D = grand_child as CollisionShape3D
-				if not co:
-					continue
-				
-				if body_created == false:
-					body_rid = PhysicsServer3D.body_create()
-					PhysicsServer3D.body_set_mode(body_rid, PhysicsServer3D.BODY_MODE_STATIC)
-					body_created = true
-				
-				var shape_rid: RID
-				if co.shape is BoxShape3D:
-					shape_rid = PhysicsServer3D.box_shape_create()
-					PhysicsServer3D.shape_set_data(shape_rid, (co.shape as BoxShape3D).size)
-					PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
-					print("--added box:", shape_rid)
-				elif co.shape is SphereShape3D:
-					shape_rid = PhysicsServer3D.sphere_shape_create()
-					PhysicsServer3D.shape_set_data(shape_rid, (co.shape as SphereShape3D).radius)
-					PhysicsServer3D.body_add_shape(body_rid, shape_rid, co.transform)
-					print("--added sphere:", shape_rid)
-				else:
-					print("dont know what shape TODO")
-			
-			if body_created:
-				print("body_rid:", body_rid)
-				PhysicsServer3D.body_set_space(body_rid, space_rid)
-				PhysicsServer3D.body_set_state(body_rid, PhysicsServer3D.BODY_STATE_TRANSFORM, \
-					mo.transform)
-				PhysicsServer3D.body_set_ray_pickable(body_rid, true)
-				_bodies[body_rid] = mo
-			else:
-				print("no shapes found for static-interactable!:", mo.resource_id)
+			_add_map_object_to_physics_server(mo);
 	
 	# TODO
 #	for child in node.get_children():
@@ -240,18 +253,25 @@ func _intersect_map_object(ray_pos: Vector3, ray_dir: Vector3, mo: MapObject) ->
 				print("Warning Unknown static object shape type:'%s'" % cs.shape.get_class())
 	return nearest_intersect
 
-func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist: float) -> MapObject:
+func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist_from_specific_pos: float, \
+	specific_pos: Vector3) -> MapObject:
 	
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 	query.from = ray_pos
-	query.to = ray_pos + ray_dir * max_dist
+#	query.collision_mask = 0b0010 # Layer 2 only (static interactables)
 	
+	query.to = ray_pos + ray_dir * (max_dist_from_specific_pos + (ray_pos - specific_pos).length())
+	
+	# This doesn't work properly (seems not to get the nearest intersection) TODO
 	var result = PhysicsServer3D.space_get_direct_state(space_rid).intersect_ray(query)
-	if result:
+	if result and (result["position"] - specific_pos).length() < max_dist_from_specific_pos:
 		var body_rid = result["rid"]
 		var mo: MapObject = _bodies[body_rid]
-		print("result:", mo.object_uid, "-", mo.resource_id)
-		return mo
+		if mo.object_type == MapObject.ObjectType.StaticInteractable:
+	#		print("result:", mo.object_uid, "-", mo.resource_id)
+			return mo
+		else:
+			print("result:", mo, " mo.object_type:", mo.object_type)
 	return null
 	
 	

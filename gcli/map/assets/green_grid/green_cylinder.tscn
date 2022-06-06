@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://brte7e6g2cwl5"]
+
+[ext_resource type="Script" path="res://map/map_object.gd" id="1_weqsa"]
+[ext_resource type="Material" uid="uid://d2orsek05u7i4" path="res://map/assets/green_grid/green_grid.tres" id="2_xdqnu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_javrs"]
+material = ExtResource( "2_xdqnu" )
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yiejt"]
+
+[node name="GreenCylinder" type="Node3D"]
+script = ExtResource( "1_weqsa" )
+object_type = 30
+interaction_behaviour = 1
+resource_id = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "CylinderMesh_javrs" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "BoxShape3D_yiejt" )
