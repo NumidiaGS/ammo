@@ -10,7 +10,7 @@ static func generate() -> Array[int]:
 	_map.resize(Extents * Extents * Height)
 	_map.fill(0)
 	
-	var tiles = [[1], [5], [6]]
+#	var tiles = [[1], [5], [6]]
 	
 	var rng_range: int = Extents * floor(sqrt(Extents))
 	for r in range(0, rng_range):

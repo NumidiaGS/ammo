@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2jd4d5k1xsfa"]
+[gd_scene load_steps=15 format=3 uid="uid://c2jd4d5k1xsfa"]
 
 [ext_resource type="Script" path="res://gm/game.gd" id="1_mo07u"]
 [ext_resource type="Script" path="res://gm/game_world.gd" id="2_56x05"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://ui/GUI.gd" id="3_12a7h"]
 [ext_resource type="Script" path="res://ui/garden/garden_gui.gd" id="6_1d4kb"]
 [ext_resource type="Theme" uid="uid://suovxbxsbs4x" path="res://ui/gui_theme.tres" id="7_xk74w"]
+[ext_resource type="Script" path="res://ui/inventory/resource_inventory.gd" id="11_q32te"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl2lj"]
 sky_top_color = Color(0.623529, 0.792157, 0.937255, 1)
@@ -167,29 +168,30 @@ offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Inventory" type="Panel" parent="GUI"]
-anchor_left = 0.75
+[node name="ResourceInventory" type="CenterContainer" parent="GUI"]
+minimum_size = Vector2(66, 66)
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.75
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -66.0
-offset_top = -89.0
+offset_left = -32.0
+offset_top = -124.0
+offset_right = 32.0
+offset_bottom = -60.0
+script = ExtResource( "11_q32te" )
+
+[node name="ColorRect" type="ColorRect" parent="GUI/ResourceInventory"]
+minimum_size = Vector2(66, 66)
 offset_right = 66.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_bottom = 66.0
+color = Color(0.176471, 0.176471, 0.176471, 1)
 
-[node name="Label" type="Label" parent="GUI/Inventory"]
-offset_left = 7.0
-offset_top = 9.0
-offset_right = 125.0
-offset_bottom = 40.0
-
-[node name="Label2" type="Label" parent="GUI/Inventory"]
-offset_left = 5.0
-offset_top = 49.0
-offset_right = 128.0
-offset_bottom = 80.0
+[node name="TextureRect" type="TextureRect" parent="GUI/ResourceInventory"]
+minimum_size = Vector2(64, 64)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 65.0
+offset_bottom = 65.0
 
 [node name="ActionBar" type="VBoxContainer" parent="GUI"]
 anchor_top = 1.0

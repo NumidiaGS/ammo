@@ -279,21 +279,35 @@ func _process(_delta):
 		processed_ticks = ticks
 		_report_hero_positions_to_players()
 		_update_report_hero_states()
-	
-#	match ti % 5:
-#		0:
-#			# TicksPerSecond / 5 hertz # 45 / 5 = 9 Times per Second
-#		1:
-#			# TicksPerSecond / 5 hertz # 45 / 5 = 9 Times per Second
-#		2:
-#			# Every Second (for each entry)
-#			var ps: int = ti / 5 # ps entries = TicksPerSecond / 5 hertz # 45 / 5 = 9
-#			if ps == 0:
-#				_update_report_hero_states()
-#			elif ps == 1:
-#				_update_lumber_tree_data()
-#		_:
-#			pass
+		
+		# Handle arisen game world simulation notifications
+		while true:
+			var note = _game_world.get_next_notification()
+			if note.size() == 0:
+				break
+			_handle_game_world_notification(note)
+					
+
+func _handle_game_world_notification(cli_notification: Array) -> void:
+	var notify_type: GameWorld.OutgoingNotificationType = cli_notification[0]
+	match notify_type:
+		GameWorld.OutgoingNotificationType.ResourceInventoryChange:
+			var peer_id: int = cli_notification[1]
+			var new_state: Array = cli_notification[2]
+			
+			var pba: PackedByteArray = _parse_resource_inventory_to_pba(new_state)
+			c_resource_inventory_state.rpc_id(peer_id, pba)
+
+###############################################
+################## Temporary (move somewhere else eventually) ##################
+###############################################
+
+func _parse_resource_inventory_to_pba(state: Array) -> PackedByteArray:
+	var pba: PackedByteArray = PackedByteArray()
+	pba.resize(state.size())
+	for i in range(0, state.size()):
+		pba.encode_u8(i, state[i])
+	return pba
 
 ###############################################
 ################## Functions ##################
@@ -302,6 +316,10 @@ func _process(_delta):
 func _set_hero_spawn_values(hero: HeroData) -> void:
 	hero.light = 30
 	hero.hitpoints = 100
+	hero.resource_inventory = [	Enums.InventoryItemType.WoodLog, \
+								Enums.InventoryItemType.OversizeOccupied, \
+								Enums.InventoryItemType.OversizeOccupied, \
+								Enums.InventoryItemType.OversizeOccupied]
 	hero.satiation = hero.max_satiation
 
 func _register_new_player_account(player_name: String, password: String, peer_id: int,) \
@@ -409,6 +427,10 @@ func c_garden_event_begun() -> void:
 
 @rpc(reliable)
 func c_holding_creation_result(_result: int) -> void:
+	pass
+
+@rpc(reliable)
+func c_resource_inventory_state(_pba: PackedByteArray) -> void:
 	pass
 
 ###############################################
@@ -654,3 +676,14 @@ func s_create_holding(holding_name: String, area: Rect2i) -> void:
 	# TODO async this?
 	var result = _map_index.create_holding(holding_name, area)
 	c_holding_creation_result.rpc_id(peer_id, result)
+
+@rpc(any_peer, reliable)
+func s_request_resource_inventory_state() -> void:
+	var peer_id = multiplayer.get_remote_sender_id()
+	if not player_accounts.has(peer_id):
+		print("s_request_resource_inventory_state:> No PlayerAccount for peer_id=", peer_id)
+		return
+	var player_acc = player_accounts[peer_id]
+	
+	var pba: PackedByteArray = _parse_resource_inventory_to_pba(player_acc.hero.resource_inventory)
+	c_resource_inventory_state.rpc_id(peer_id, pba)

@@ -21,7 +21,10 @@ signal notification()
 
 enum OutgoingNotificationType {
 	NULL = 0,
-	PlayerDeath
+	PlayerDeath,
+	# Notification for a change of state of the resource inventory
+	# Output Fields = [OutgoingNotificationType, player_peer_id, inventory_state]
+	ResourceInventoryChange,
 }
 
 enum DeathCauseType {
@@ -67,6 +70,10 @@ var _map_objects: Array = []
 var outgoing_notifications: Array
 var _queued_notifications: Array
 
+#####################################################################
+###########################  Operations  ############################
+#####################################################################
+
 func begin_async() -> int:
 	_init_world()
 	
@@ -78,21 +85,31 @@ func begin_async() -> int:
 	return err
 
 # Thread must be disposed (or "joined"), for portability.
-func end_async():
+func end_async() -> void:
 	_thread_mutex.lock()
 	_quit_thread = true
 	_thread_mutex.unlock()
 	_thread.wait_to_finish()
 
-func _init_world():
+# Returns null if no notification exists, else returns an array with the following items:
+# - [OutgoingNotificationType, data1]
+func get_next_notification() -> Array:
+	if outgoing_notifications.size() == 0:
+		return []
+	return outgoing_notifications.pop_front()
+
+#####################################################################
+#############################  Process  #############################
+#####################################################################
+
+func _init_world() -> void:
 	var _map = TileMapGenerator.generate()
-			
 
 # Run here and exit.
 # The argument is the userdata passed from start().
 # If no argument was passed, this one still needs to
 # be here and it will be null.
-func _threaded_process():
+func _threaded_process() -> void:
 	const TickUpdatePeriodUsecs: int = 1000000 / TargetTicksPerSecond
 	const DelayPeriodUsecs: int = 500
 	
