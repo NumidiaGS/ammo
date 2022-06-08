@@ -50,7 +50,7 @@ var max_digestion: int = 100
 
 # State
 var light: int
-
+var resource_inventory: Array
 var hitpoints: int
 
 # Statuses

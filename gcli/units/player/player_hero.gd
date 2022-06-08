@@ -134,7 +134,7 @@ func on_player_hero_position_update(server_update_time: int, pos: Vector3, yaw: 
 func adjust_yaw(amount: float):
 	_mouse_delta_x += amount
 
-func move_forward(delta: float):
+func move_forward(_delta: float):
 	_external_forward_command = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

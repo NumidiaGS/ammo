@@ -23,6 +23,9 @@ signal baddie_position_update(uid, pos)
 signal garden_queue_info_received(info)
 signal garden_state_received(state)
 signal garden_event_begun_for_player()
+# Resource Inventory Update
+# - state: Array - Slot Occupation Information for the resource inventory
+signal resource_inventory_update(state)
 
 ##############################
 ########## Settings ##########
@@ -117,6 +120,10 @@ func s_object_interaction(_object_uid: int) -> void:
 func s_create_holding(_holding_name: String, _area: Rect2i) -> void:
 	pass
 
+@rpc(reliable)
+func s_request_resource_inventory_state() -> void:
+	pass
+
 ##############################
 ##### Outgoing Operations ####
 ##############################
@@ -183,6 +190,9 @@ func temp_get_world_data() -> void:
 
 func get_chunk_lumber_trees(chunk_index: int) -> void:
 	s_get_chunk_lumber_trees.rpc_id(server_peer_id, chunk_index)
+
+func request_resource_inventory_update() -> void:
+	s_request_resource_inventory_state.rpc_id(server_peer_id)
 
 ##############################
 ########### Events ###########
@@ -306,3 +316,11 @@ func c_garden_event_begun() -> void:
 @rpc(reliable)
 func c_holding_creation_result(result: int) -> void:
 	print("c_holding_creation_result:", result)
+
+@rpc(reliable)
+func c_resource_inventory_state(_pba: PackedByteArray) -> void:
+	var new_state: Array = []
+	new_state.resize(_pba.size())
+	for i in range(0, _pba.size()):
+		new_state[i] = _pba[i] as Enums.InventoryItemType
+	emit_signal("resource_inventory_update", new_state)
