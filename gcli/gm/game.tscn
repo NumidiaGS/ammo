@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2jd4d5k1xsfa"]
+[gd_scene load_steps=17 format=3 uid="uid://j7i3x8h3vxrj"]
 
 [ext_resource type="Script" path="res://gm/game.gd" id="1_mo07u"]
 [ext_resource type="Script" path="res://gm/game_world.gd" id="2_56x05"]
@@ -7,10 +7,12 @@
 [ext_resource type="Script" path="res://gm/player_control.gd" id="2_on6oe"]
 [ext_resource type="Script" path="res://ui/fps_counter/fps_counter.gd" id="3_1pqx1"]
 [ext_resource type="Script" path="res://units/units.gd" id="3_3rp7y"]
-[ext_resource type="Script" path="res://ui/GUI.gd" id="3_12a7h"]
+[ext_resource type="Script" path="res://ui/gui.gd" id="3_12a7h"]
 [ext_resource type="Script" path="res://ui/garden/garden_gui.gd" id="6_1d4kb"]
-[ext_resource type="Theme" uid="uid://suovxbxsbs4x" path="res://ui/gui_theme.tres" id="7_xk74w"]
+[ext_resource type="Theme" uid="uid://ckxsa2kcdfi0q" path="res://ui/gui_theme.tres" id="7_xk74w"]
 [ext_resource type="Script" path="res://ui/inventory/resource_inventory.gd" id="11_q32te"]
+[ext_resource type="PackedScene" uid="uid://4kp58lhk1sme" path="res://ui/stockpile_interface/commodity_entry.tscn" id="12_qmbp5"]
+[ext_resource type="Script" path="res://ui/stockpile_interface/stockpile_interface.gd" id="12_tspbo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl2lj"]
 sky_top_color = Color(0.623529, 0.792157, 0.937255, 1)
@@ -174,17 +176,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -32.0
+offset_left = -254.0
 offset_top = -124.0
-offset_right = 32.0
-offset_bottom = -60.0
+offset_right = -188.0
+offset_bottom = -58.0
 script = ExtResource( "11_q32te" )
 
 [node name="ColorRect" type="ColorRect" parent="GUI/ResourceInventory"]
 minimum_size = Vector2(66, 66)
 offset_right = 66.0
 offset_bottom = 66.0
-color = Color(0.176471, 0.176471, 0.176471, 1)
+color = Color(0.176471, 0.176471, 0.176471, 0.654902)
 
 [node name="TextureRect" type="TextureRect" parent="GUI/ResourceInventory"]
 minimum_size = Vector2(64, 64)
@@ -237,6 +239,76 @@ offset_top = 51.0
 offset_right = 86.0
 offset_bottom = 55.0
 
+[node name="StockpileInterface" type="ColorRect" parent="GUI"]
+visible = false
+minimum_size = Vector2(480, 320)
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -232.0
+offset_top = 90.0
+offset_right = 248.0
+offset_bottom = 410.0
+grow_horizontal = 2
+color = Color(0.172549, 0.172549, 0.172549, 0.760784)
+script = ExtResource( "12_tspbo" )
+metadata/_edit_layout_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="GUI/StockpileInterface"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -279.0
+offset_right = 234.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 2
+metadata/_edit_layout_mode = 1
+
+[node name="Commodity0" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_right = 234.0
+offset_bottom = 66.0
+
+[node name="Commodity1" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_left = 238.0
+offset_right = 472.0
+offset_bottom = 66.0
+
+[node name="Commodity2" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_top = 70.0
+offset_right = 234.0
+offset_bottom = 136.0
+
+[node name="Commodity3" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_left = 238.0
+offset_top = 70.0
+offset_right = 472.0
+offset_bottom = 136.0
+
+[node name="Commodity4" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_top = 140.0
+offset_right = 234.0
+offset_bottom = 206.0
+
+[node name="Commodity5" parent="GUI/StockpileInterface/GridContainer" instance=ExtResource( "12_qmbp5" )]
+offset_left = 238.0
+offset_top = 140.0
+offset_right = 472.0
+offset_bottom = 206.0
+
+[node name="CloseButton" type="Button" parent="GUI/StockpileInterface"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+icon_alignment = 1
+metadata/_edit_layout_mode = 1
+
 [connection signal="pressed" from="GUI/Garden/QueueInfo/QueueButton" to="GUI/Garden" method="_on_queue_button_pressed"]
 [connection signal="pressed" from="GUI/Garden/QueueInfo/ExitButton" to="GUI/Garden" method="_on_queue_info_exit_pressed"]
 [connection signal="pressed" from="GUI/ActionBar/HBoxContainer/Button" to="GUI" method="_on_action_button_pressed" binds= ["PlaceProperty"]]
+[connection signal="pressed" from="GUI/StockpileInterface/CloseButton" to="GUI/StockpileInterface" method="_on_close_button_pressed"]

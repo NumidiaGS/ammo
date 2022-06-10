@@ -23,7 +23,7 @@ enum OutgoingNotificationType {
 	NULL = 0,
 	PlayerDeath,
 	# Notification for a change of state of the resource inventory
-	# Output Fields = [OutgoingNotificationType, player_peer_id, inventory_state]
+	# Output Fields = [OutgoingNotificationType, player_peer_id, Enums.InventoryItemType]
 	ResourceInventoryChange,
 }
 
