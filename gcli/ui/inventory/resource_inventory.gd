@@ -25,20 +25,23 @@ func _ready():
 		"PlayerHero connect to Server::resource_inventory_update")
 		
 	_icons = preload("res://ui/inventory/resource_inventory_icons.png")
-	print("_icons:", _icons)
 	
 	_add_icon_atlas_texture(Enums.InventoryItemType.RedBerry, 0, 0)
 	_add_icon_atlas_texture(Enums.InventoryItemType.WoodLog, 0, 1)
 	
 	$TextureRect.visible = false
 
-func _on_resource_inventory_update(new_state: Array):
-	print("resource_inventory_update:", new_state)
-	if _icon_atlas.has(new_state[0]):
+func _on_resource_inventory_update(new_state: Enums.InventoryItemType):
+#	print("resource_inventory_update:", new_state)
+	if new_state == Enums.InventoryItemType.Empty:
+		$TextureRect.visible = false
+		return
+	
+	if _icon_atlas.has(new_state):
 		$TextureRect.visible = true
-		$TextureRect.texture = _icon_atlas[new_state[0]]
+		$TextureRect.texture = _icon_atlas[new_state]
 	else:
-		print("No texture icon for resource inventory item: ", new_state[0])
+		print("No texture icon for resource inventory item: ", new_state)
 
 func _process(delta):
 	_elapsed_since_resource_update += delta

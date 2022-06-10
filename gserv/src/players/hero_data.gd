@@ -50,7 +50,7 @@ var max_digestion: int = 100
 
 # State
 var light: int
-var resource_inventory: Array
+var resource_inventory: Enums.InventoryItemType
 var hitpoints: int
 
 # Statuses

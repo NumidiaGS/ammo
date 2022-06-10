@@ -293,7 +293,7 @@ func _handle_game_world_notification(cli_notification: Array) -> void:
 	match notify_type:
 		GameWorld.OutgoingNotificationType.ResourceInventoryChange:
 			var peer_id: int = cli_notification[1]
-			var new_state: Array = cli_notification[2]
+			var new_state: Enums.InventoryItemType = cli_notification[2]
 			
 			var pba: PackedByteArray = _parse_resource_inventory_to_pba(new_state)
 			c_resource_inventory_state.rpc_id(peer_id, pba)
@@ -302,11 +302,10 @@ func _handle_game_world_notification(cli_notification: Array) -> void:
 ################## Temporary (move somewhere else eventually) ##################
 ###############################################
 
-func _parse_resource_inventory_to_pba(state: Array) -> PackedByteArray:
+func _parse_resource_inventory_to_pba(inventory_state: Enums.InventoryItemType) -> PackedByteArray:
 	var pba: PackedByteArray = PackedByteArray()
-	pba.resize(state.size())
-	for i in range(0, state.size()):
-		pba.encode_u8(i, state[i])
+	pba.resize(1)
+	pba.encode_u8(0, inventory_state)
 	return pba
 
 ###############################################
@@ -316,10 +315,7 @@ func _parse_resource_inventory_to_pba(state: Array) -> PackedByteArray:
 func _set_hero_spawn_values(hero: HeroData) -> void:
 	hero.light = 30
 	hero.hitpoints = 100
-	hero.resource_inventory = [	Enums.InventoryItemType.WoodLog, \
-								Enums.InventoryItemType.OversizeOccupied, \
-								Enums.InventoryItemType.OversizeOccupied, \
-								Enums.InventoryItemType.OversizeOccupied]
+	hero.resource_inventory = Enums.InventoryItemType.Empty
 	hero.satiation = hero.max_satiation
 
 func _register_new_player_account(player_name: String, password: String, peer_id: int,) \

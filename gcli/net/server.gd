@@ -24,7 +24,7 @@ signal garden_queue_info_received(info)
 signal garden_state_received(state)
 signal garden_event_begun_for_player()
 # Resource Inventory Update
-# - state: Array - Slot Occupation Information for the resource inventory
+# - state: Enums.InventoryItemType - Slot Occupation Information for the resource inventory
 signal resource_inventory_update(state)
 
 ##############################
@@ -319,8 +319,5 @@ func c_holding_creation_result(result: int) -> void:
 
 @rpc(reliable)
 func c_resource_inventory_state(_pba: PackedByteArray) -> void:
-	var new_state: Array = []
-	new_state.resize(_pba.size())
-	for i in range(0, _pba.size()):
-		new_state[i] = _pba[i] as Enums.InventoryItemType
+	var new_state: Enums.InventoryItemType = _pba.decode_u8(0) as Enums.InventoryItemType
 	emit_signal("resource_inventory_update", new_state)
