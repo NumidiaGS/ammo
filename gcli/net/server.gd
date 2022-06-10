@@ -5,9 +5,9 @@
 
 extends Node
 
-##############################
-########## Signals ###########
-##############################
+########################################
+############### Signals ################
+########################################
 
 signal account_login_successful(first_character_summary)
 signal player_hero_info_received(serialized_summary, hero_position)
@@ -27,13 +27,13 @@ signal garden_event_begun_for_player()
 # - state: Enums.InventoryItemType - Slot Occupation Information for the resource inventory
 signal resource_inventory_update(state)
 
-##############################
-########## Settings ##########
-##############################
+##########################################
+################ Settings ################
+####################################
 
-##############################
-########## Variables #########
-##############################
+####################################
+################ Variables ###############
+####################################
 
 var network : ENetMultiplayerPeer
 var server_peer_id: int = 1
@@ -45,9 +45,9 @@ var game_server_time_offset: int = 0
 var game_server_latency: int = 0
 var _game_server_ping_timer: Timer = Timer.new()
 
-##############################
-####### Initialization #######
-##############################
+##########################################
+############# Initialization #############
+##########################################
 
 func _ready():
 	pass
@@ -56,9 +56,9 @@ func _ready():
 func get_current_server_time() -> int:
 	return Time.get_ticks_msec() + game_server_time_offset
 
-##############################
-###### Server Interface ######
-##############################
+##########################################
+############ Server Interface ############
+##########################################
 
 # s = "Server Receive"
 
@@ -124,9 +124,9 @@ func s_create_holding(_holding_name: String, _area: Rect2i) -> void:
 func s_request_resource_inventory_state() -> void:
 	pass
 
-##############################
-##### Outgoing Operations ####
-##############################
+##########################################
+########### Outgoing Operations ##########
+##########################################
 
 const GAME_CONNECTION: String = "GAME_CONNECTION"
 func begin_game_connection(ip: String, port: int, callback: Callable) -> int:
@@ -194,9 +194,9 @@ func get_chunk_lumber_trees(chunk_index: int) -> void:
 func request_resource_inventory_update() -> void:
 	s_request_resource_inventory_state.rpc_id(server_peer_id)
 
-##############################
-########### Events ###########
-##############################
+##########################################
+################# Events #################
+##########################################
 
 func _on_game_server_ping_timeout() -> void:
 	s_ping.rpc_id(server_peer_id, Time.get_ticks_msec())
@@ -223,9 +223,9 @@ func _on_server_connect_succeeded() -> void:
 	add_child(_game_server_ping_timer)
 	_game_server_ping_timer.start()
 
-##############################
-##### Incoming Operations ####
-##############################
+##########################################
+########### Incoming Operations ##########
+##########################################
 
 # c = "Network Client Receive"
 # DO NOT call these from this client

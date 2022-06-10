@@ -54,6 +54,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://units/player/player_hero.gd"
 }, {
+"base": "ColorRect",
+"class": &"StockpileInterface",
+"language": &"GDScript",
+"path": "res://ui/stockpile_interface/stockpile_interface.gd"
+}, {
 "base": "Object",
 "class": &"TerrainMeshGen",
 "language": &"GDScript",
@@ -69,6 +74,7 @@ _global_script_class_icons={
 "MapObject": "",
 "PlayerControl": "",
 "PlayerHero": "",
+"StockpileInterface": "",
 "TerrainMeshGen": ""
 }
 

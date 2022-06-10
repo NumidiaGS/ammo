@@ -222,5 +222,11 @@ func register_input_event(event: InputEvent) -> int:
 
 func _begin_interact_with_object(obj: MapObject):
 	match obj.interaction_behaviour:
+		MapObject.InteractionBehaviour.CoreStockpile:
+			var stockpile_interface: StockpileInterface = get_node("/root/Game/GUI/StockpileInterface")
+			print("stockpile_interface:", stockpile_interface)
+			
+			# Make visible
+			stockpile_interface.display(obj.object_uid)
 		_:
 			pass
