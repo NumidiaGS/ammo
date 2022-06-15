@@ -14,6 +14,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://common_src/enums.gd"
 }, {
+"base": "ColorRect",
+"class": &"FoundationStoneIF",
+"language": &"GDScript",
+"path": "res://ui/foundation_stone_if/foundation_stone_if.gd"
+}, {
 "base": "Node",
 "class": &"GameSceneLoader",
 "language": &"GDScript",
@@ -66,6 +71,7 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "Enums": "",
+"FoundationStoneIF": "",
 "GameSceneLoader": "",
 "GameWorld": "",
 "KingdomHolding": "",

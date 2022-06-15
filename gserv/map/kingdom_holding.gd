@@ -17,10 +17,11 @@ var holding_uid: int
 
 enum HoldingType {  NULL = 0,
 					NodeGrouping = 1,
-					Farm = 30, }
+					Farm = 30,
+					House = 31, }
 @export var holding_type: HoldingType
 
-var area: Rect2i
+@export var area: Rect2i
 
 # Assumes HoldingType values do not exceed 255 (1 byte allocation)
 func encode_to_byte_array() -> PackedByteArray:

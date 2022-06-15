@@ -222,11 +222,16 @@ func register_input_event(event: InputEvent) -> int:
 
 func _begin_interact_with_object(obj: MapObject):
 	match obj.interaction_behaviour:
-		MapObject.InteractionBehaviour.CoreStockpile:
+		MapObject.InteractionBehaviour.TownStockpile:
 			var stockpile_interface: StockpileInterface = get_node("/root/Game/GUI/StockpileInterface")
-			print("stockpile_interface:", stockpile_interface)
+#			print("stockpile_interface:", stockpile_interface)
 			
 			# Make visible
 			stockpile_interface.display(obj.object_uid)
+		MapObject.InteractionBehaviour.TownFoundationStone:
+			var tfs_interface: FoundationStoneIF = get_node("/root/Game/GUI/FoundationStoneIF")
+			
+			# Make visible
+			tfs_interface.display(obj.object_uid)
 		_:
 			pass

@@ -38,8 +38,8 @@ enum InteractionBehaviour { NULL = 0,
 							Stick = 30,
 							StoneShard = 31,
 							Flint = 32,
-							CoreStockpile = 40,
-							CorePillar = 41, }
+							TownStockpile = 40,
+							TownFoundationStone = 41, }
 @export var interaction_behaviour: InteractionBehaviour
 
 # ? Values are permitted for 2 bytes (u16) so between 0 to 65,535
@@ -50,6 +50,7 @@ enum ResourceIdentity { NULL = 0,
 						TealGrid = 7,
 						GreenCylinder = 8,
 						BasicBox = 9,
+						GreenHexagon = 10,
 						LumberTree = 20,
 						FlaxBush = 25,
 						BerryBush = 26,

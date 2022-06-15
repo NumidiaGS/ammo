@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://sc3nqewbpa8h"]
+[gd_scene load_steps=12 format=3 uid="uid://sc3nqewbpa8h"]
 
 [ext_resource type="Script" path="res://map/editor_map_chunk.gd" id="1_a380h"]
 [ext_resource type="PackedScene" uid="uid://cckg8pwebd17" path="res://map/assets/berry_bush/berry_bush.tscn" id="3_s83uw"]
+[ext_resource type="Script" path="res://map/kingdom_holding.gd" id="8_8laqp"]
 [ext_resource type="Script" path="res://map/spawn_area.gd" id="8_xdchc"]
+[ext_resource type="PackedScene" uid="uid://iqug512ehkhh" path="res://map/assets/grey_grid/grey_grid.tscn" id="9_3gq7c"]
 [ext_resource type="PackedScene" uid="uid://brhcn0qnyf41v" path="res://map/assets/tree/tree.tscn" id="9_vtlk1"]
 [ext_resource type="PackedScene" uid="uid://b8dyk0tguhq11" path="res://map/assets/green_grid/green_grid.tscn" id="10_kjf06"]
+[ext_resource type="PackedScene" uid="uid://s81yjn5t2hwg" path="res://map/assets/green_grid/green_hexagon.tscn" id="10_ro6h3"]
+[ext_resource type="PackedScene" uid="uid://dhj3y6eq7rws7" path="res://map/assets/water_cell/water_cell.tscn" id="11_x4ivo"]
 [ext_resource type="PackedScene" uid="uid://xcsxbrog4c6n" path="res://map/assets/basic_shapes/basic_box.tscn" id="13_gmfp3"]
 [ext_resource type="Script" path="res://map/map_object.gd" id="15_x1422"]
 
@@ -17,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6939, 0, -41.1077)
 object_type = null
 
 [node name="BerryBush2" parent="." instance=ExtResource( "3_s83uw" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1409, 0, 48.8472)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.3738, 0, 48.8472)
 object_type = null
 
 [node name="BerryBush3" parent="." instance=ExtResource( "3_s83uw" )]
@@ -121,26 +125,101 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.0672, -7.62939e-06, 0.805
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7772, -1.52588e-05, -13.9223)
 
 [node name="TerrainPlaceholder" parent="." instance=ExtResource( "10_kjf06" )]
-transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 256, 0, -0.5, 0)
+transform = Transform3D(64, 0, 0, 0, 1, 0, 0, 0, 64, -16, -0.5, 0)
+visible = false
 
 [node name="TownCore" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
 script = ExtResource( "15_x1422" )
 object_type = 11
 interaction_behaviour = 1
 resource_id = 1
 
 [node name="BasicBox31" parent="TownCore" instance=ExtResource( "13_gmfp3" )]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 0, -0.4, 0)
+transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 12, 3, -0.189894, 0)
 object_type = 35
 interaction_behaviour = 40
 
 [node name="BasicBox32" parent="TownCore" instance=ExtResource( "13_gmfp3" )]
-transform = Transform3D(10, 0, 0, 0, 2, 0, 0, 0, 10, 0, 1, 0)
+transform = Transform3D(10, 0, 0, 0, 2, 0, 0, 0, 10, 3, 1, 0)
 object_type = 35
 interaction_behaviour = 40
 
 [node name="BasicBox" parent="TownCore" instance=ExtResource( "13_gmfp3" )]
-transform = Transform3D(3, 0, 0, 0, 8, 0, 0, 0, 1, 0, 3.5, 27)
+transform = Transform3D(-1.31134e-07, 0, -1, 0, 8, 0, 3, 0, -4.37114e-08, 13, 3.5, 0)
 object_type = 35
 interaction_behaviour = 41
+
+[node name="KingdomHolding" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+script = ExtResource( "8_8laqp" )
+holding_type = 31
+area = Rect2i(16, -16, 32, 32)
+
+[node name="Road" parent="." instance=ExtResource( "9_3gq7c" )]
+transform = Transform3D(16, 0, 0, 0, 1, 0, 0, 0, 512, 24, -0.5, 237.5)
+
+[node name="GreenHexagon8" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, 16.4949, -1, 0)
+
+[node name="GreenHexagon9" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -4.30109, -1, 35.991)
+
+[node name="GreenHexagon10" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -25.0761, -1, 0)
+
+[node name="GreenHexagon11" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -4.29209, -1, -35.997)
+
+[node name="GreenHexagon26" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, 57.9657, -1, 0)
+
+[node name="GreenHexagon27" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, 37.3, -1, 35.991)
+
+[node name="GreenHexagon28" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, 37.3, -1, -35.997)
+
+[node name="GreenHexagon12" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -45.8652, -1, 35.991)
+
+[node name="GreenHexagon13" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -66.6402, -1, 0)
+
+[node name="GreenHexagon14" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -45.8562, -1, -35.997)
+
+[node name="GreenHexagon15" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 9, 0, 0, 0, 24, -25.0538, -0.999998, 72.0369)
+
+[node name="GreenHexagon16" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -45.9513, -77, 108.132)
+
+[node name="GreenHexagon17" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -66.9513, -74, 144.132)
+
+[node name="GreenHexagon18" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -87.9513, -71, 180.132)
+
+[node name="GreenHexagon19" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -108.951, -68, 216.132)
+
+[node name="GreenHexagon20" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -129.951, -65, 252.132)
+
+[node name="GreenHexagon21" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -87.9513, -74, 108.132)
+
+[node name="GreenHexagon22" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -108.951, -68, 144.132)
+
+[node name="GreenHexagon23" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -129.951, -62, 180.132)
+
+[node name="GreenHexagon24" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -150.951, -56, 216.132)
+
+[node name="GreenHexagon25" parent="." instance=ExtResource( "10_ro6h3" )]
+transform = Transform3D(24, 0, 0, 0, 800, 0, 0, 0, 24, -171.951, -50, 252.132)
+
+[node name="WaterCell" parent="." instance=ExtResource( "11_x4ivo" )]
+transform = Transform3D(256, 0, 0, 0, 1, 0, 0, 0, 18, -3.432, -0.475, -27.171)

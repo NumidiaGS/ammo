@@ -683,3 +683,13 @@ func s_request_resource_inventory_state() -> void:
 	
 	var pba: PackedByteArray = _parse_resource_inventory_to_pba(player_acc.hero.resource_inventory)
 	c_resource_inventory_state.rpc_id(peer_id, pba)
+
+@rpc(any_peer, reliable)
+func s_request_foundation_stone_info(foundation_stone_uid: int) -> void:
+	var peer_id = multiplayer.get_remote_sender_id()
+	if not player_accounts.has(peer_id):
+		print("s_request_foundation_stone_info:> No PlayerAccount for peer_id=", peer_id)
+		return
+	var player_acc = player_accounts[peer_id]
+	
+	print("TODO -- s_request_foundation_stone_info")

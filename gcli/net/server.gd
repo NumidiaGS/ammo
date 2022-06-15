@@ -124,6 +124,10 @@ func s_create_holding(_holding_name: String, _area: Rect2i) -> void:
 func s_request_resource_inventory_state() -> void:
 	pass
 
+@rpc(reliable)
+func s_request_foundation_stone_info(foundation_stone_uid: int) -> void:
+	pass
+
 ##########################################
 ########### Outgoing Operations ##########
 ##########################################
@@ -193,6 +197,9 @@ func get_chunk_lumber_trees(chunk_index: int) -> void:
 
 func request_resource_inventory_update() -> void:
 	s_request_resource_inventory_state.rpc_id(server_peer_id)
+
+func request_foundation_stone_info(foundation_stone_uid: int) -> void:
+	s_request_foundation_stone_info.rpc_id(server_peer_id, foundation_stone_uid);
 
 ##########################################
 ################# Events #################

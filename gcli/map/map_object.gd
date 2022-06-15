@@ -5,10 +5,13 @@
 
 extends Node3D
 
+# words
 class_name MapObject
+# after
+
 
 ####################################################
-# ALERT Keep updated with gserv/map/map_object.gd
+# ALERT Keep updated with gcli/map/map_object.gd
 #  AND consistent with below exported enums
 ####################################################
 var object_uid: int
@@ -16,8 +19,8 @@ var object_uid: int
 # ? Values are permitted for 2 bytes (u16) so between 0 to 65,535
 enum ObjectType {   NULL = 0,
 					ServerOnly = 10,
+					ServerCompositeNode = 11,
 					KingdomHolding = 20,
-					CompositeNode = 21,
 					StaticSolid = 30,
 					StaticInteractable = 35,
 					LightPickup = 50,
@@ -35,8 +38,8 @@ enum InteractionBehaviour { NULL = 0,
 							Stick = 30,
 							StoneShard = 31,
 							Flint = 32,
-							CoreStockpile = 40,
-							CorePillar = 41, }
+							TownStockpile = 40,
+							TownFoundationStone = 41, }
 @export var interaction_behaviour: InteractionBehaviour
 
 # ? Values are permitted for 2 bytes (u16) so between 0 to 65,535
@@ -47,6 +50,7 @@ enum ResourceIdentity { NULL = 0,
 						TealGrid = 7,
 						GreenCylinder = 8,
 						BasicBox = 9,
+						GreenHexagon = 10,
 						LumberTree = 20,
 						FlaxBush = 25,
 						BerryBush = 26,

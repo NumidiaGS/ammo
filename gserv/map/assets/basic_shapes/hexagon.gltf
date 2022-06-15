@@ -1,0 +1,101 @@
+{
+    "asset" : {
+        "copyright" : "Numidia Game Studios",
+        "generator" : "Khronos glTF Blender I/O v3.2.40",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Hexagon"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Circle",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 36,
+            "max" : [
+                0.866025447845459,
+                0.10000000149011612,
+                1
+            ],
+            "min" : [
+                -0.866025447845459,
+                0,
+                -1
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 36,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 36,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 60,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 432,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 432,
+            "byteOffset" : 432
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 288,
+            "byteOffset" : 864
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 120,
+            "byteOffset" : 1152
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1272,
+            "uri" : "data:application/octet-stream;base64,AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/2LNdvwAAAAD///++2LNdvwAAAAD///++2LNdvwAAAAD///++17NdvwAAAAABAAA/17NdvwAAAAABAAA/17NdvwAAAAABAAA/Lr27MwAAAAAAAIA/Lr27MwAAAAAAAIA/Lr27MwAAAAAAAIA/2LNdPwAAAAD9//8+2LNdPwAAAAD9//8+2LNdPwAAAAD9//8+2LNdPwAAAAD9//++2LNdPwAAAAD9//++2LNdPwAAAAD9//++AAAAAM3MzD0AAIC/AAAAAM3MzD0AAIC/AAAAAM3MzD0AAIC/2LNdv83MzD3///++2LNdv83MzD3///++2LNdv83MzD3///++17Ndv83MzD0BAAA/17Ndv83MzD0BAAA/17Ndv83MzD0BAAA/Lr27M83MzD0AAIA/Lr27M83MzD0AAIA/Lr27M83MzD0AAIA/2LNdP83MzD39//8+2LNdP83MzD39//8+2LNdP83MzD39//8+2LNdP83MzD39//++2LNdP83MzD39//++2LNdP83MzD39//++////vgAAAADXs12/AAAAAAAAgL8AAACAAAAAPwAAAADVs12/AACAvwAAAAAAAKAz////vgAAAADXs12/AAAAAAAAgL8AAACAAACAvwAAAAAAAKAz/v//vgAAAADYs10/AAAAAAAAgL8AAACA/v//vgAAAADYs10/AAAAAAAAgL8AAACAAgAAPwAAAADXs10/AAAAAAAAgL8AAACAAgAAPwAAAADXs10///9/PwAAAAAAAACAAAAAAAAAgL8AAACAAAAAPwAAAADVs12///9/PwAAAAAAAACA////vgAAAADXs12/oxFFsf//fz8AAACAAAAAPwAAAADVs12/AACAvwAAAAAAAKAz////vgAAAADXs12/oxFFsf//fz8AAACAAACAvwAAAAAAAKAz/v//vgAAAADYs10/oxFFsf//fz8AAACA/v//vgAAAADYs10/oxFFsf//fz8AAACAAgAAPwAAAADXs10/oxFFsf//fz8AAACAAgAAPwAAAADXs10///9/PwAAAAAAAACAoxFFsf//fz8AAACAAAAAPwAAAADVs12///9/PwAAAAAAAACAAAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAgD8AAAAAAACAPwAAAAAAAIA/CQAbABkACQAZAAcABAAWABIABAASAAAAAgAUACIAAgAiABAADQAfAB0ADQAdAAsABgAYABUABgAVAAMAEQAjACAAEQAgAA4AEwAXABoAGgAcAB4AHgAhABMAGgAeABMACAAFAAEAAQAPAAwADAAKAAgAAQAMAAgA"
+        }
+    ]
+}
