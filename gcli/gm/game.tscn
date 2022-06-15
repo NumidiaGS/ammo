@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://j7i3x8h3vxrj"]
+[gd_scene load_steps=18 format=3 uid="uid://j7i3x8h3vxrj"]
 
 [ext_resource type="Script" path="res://gm/game.gd" id="1_mo07u"]
 [ext_resource type="Script" path="res://gm/game_world.gd" id="2_56x05"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://ui/inventory/resource_inventory.gd" id="11_q32te"]
 [ext_resource type="PackedScene" uid="uid://4kp58lhk1sme" path="res://ui/stockpile_interface/commodity_entry.tscn" id="12_qmbp5"]
 [ext_resource type="Script" path="res://ui/stockpile_interface/stockpile_interface.gd" id="12_tspbo"]
+[ext_resource type="Script" path="res://ui/foundation_stone_if/foundation_stone_if.gd" id="14_jse44"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gl2lj"]
 sky_top_color = Color(0.623529, 0.792157, 0.937255, 1)
@@ -309,7 +310,44 @@ text = "X"
 icon_alignment = 1
 metadata/_edit_layout_mode = 1
 
+[node name="FoundationStoneIF" type="ColorRect" parent="GUI"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 121.0
+offset_right = 160.0
+offset_bottom = 501.0
+grow_horizontal = 2
+color = Color(0.176471, 0.176471, 0.176471, 1)
+script = ExtResource( "14_jse44" )
+metadata/_edit_layout_mode = 1
+
+[node name="TownNameLabel" type="Label" parent="GUI/FoundationStoneIF"]
+offset_left = 64.0
+offset_top = 12.0
+offset_right = 128.0
+offset_bottom = 38.0
+scale = Vector2(2.69507, 1.56937)
+text = "Maheno"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="GUI/FoundationStoneIF"]
+minimum_size = Vector2(32, 32)
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "X"
+icon_alignment = 1
+
 [connection signal="pressed" from="GUI/Garden/QueueInfo/QueueButton" to="GUI/Garden" method="_on_queue_button_pressed"]
 [connection signal="pressed" from="GUI/Garden/QueueInfo/ExitButton" to="GUI/Garden" method="_on_queue_info_exit_pressed"]
 [connection signal="pressed" from="GUI/ActionBar/HBoxContainer/Button" to="GUI" method="_on_action_button_pressed" binds= ["PlaceProperty"]]
 [connection signal="pressed" from="GUI/StockpileInterface/CloseButton" to="GUI/StockpileInterface" method="_on_close_button_pressed"]
+[connection signal="pressed" from="GUI/FoundationStoneIF/CloseButton" to="GUI/FoundationStoneIF" method="_on_close_button_pressed"]
