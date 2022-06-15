@@ -171,6 +171,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ResourceInventory" type="CenterContainer" parent="GUI"]
+visible = false
 minimum_size = Vector2(66, 66)
 anchor_left = 0.5
 anchor_top = 1.0

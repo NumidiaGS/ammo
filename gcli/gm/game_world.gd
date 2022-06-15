@@ -271,7 +271,8 @@ func get_picking_collision(ray_pos: Vector3, ray_dir: Vector3, max_dist_from_spe
 	#		print("result:", mo.object_uid, "-", mo.resource_id)
 			return mo
 		else:
-			print("result:", mo, " mo.object_type:", mo.object_type)
+#			print("result:", mo, " mo.object_type:", mo.object_type)
+			pass
 	return null
 	
 	
