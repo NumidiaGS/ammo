@@ -291,7 +291,7 @@ func _on_player_hero_info_received(serialized_hero_summary: String, hero_positio
 	_player_hero.position = hero_position
 	# TODO fix when you dont call the method below
 	_player_hero.register_server_hero_record(Server.get_current_server_time(), \
-		hero_position, PI / 4, Vector3.ZERO)
+		hero_position, PI / 2, Vector3.ZERO)
 	_player_hero.mutex.unlock()
 	print("_on_player_hero_info_received>:Leaving")
 

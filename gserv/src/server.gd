@@ -336,8 +336,8 @@ func _register_new_player_account(player_name: String, password: String, peer_id
 	pc.hero.level = 1
 	_set_hero_spawn_values(pc.hero)
 	
-	pc.hero.position = Vector3(2, 0, -32)
-	pc.hero.yaw = deg2rad(225.0)
+	pc.hero.position = Vector3(32, 0, 0)
+	pc.hero.yaw = deg2rad(135.0)
 	
 	pc.hero.cmr_position = pc.hero.position
 	pc.hero.cmr_yaw = pc.hero.yaw
